@@ -3874,34 +3874,66 @@
         }
       }
     },
-    "Switch Input" : {
+    "Switch Input 1" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "切换输入"
+            "value" : "切换输入源 1"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "切換輸入"
+            "value" : "切換輸入源 1"
           }
         }
       }
     },
-    "Switches the display under the pointer to its next input (HDMI, DisplayPort…). Another input disconnects the display; its Reconnect row brings it back." : {
+    "Switch Input 2" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "将指针所在显示器切换到下一个输入（HDMI、DisplayPort…）。切换到其他输入会断开显示器；其「重新连接」行可将其切回。"
+            "value" : "切换输入源 2"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "將指標所在顯示器切換到下一個輸入（HDMI、DisplayPort…）。切換到其他輸入會中斷顯示器；其「重新連線」列可將其切回。"
+            "value" : "切換輸入源 2"
+          }
+        }
+      }
+    },
+    "Switches the display under the pointer to the chosen input over DDC (HDMI, DisplayPort…). Another input disconnects the display; its Reconnect row brings it back." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将指针所在显示器切换到所选输入（HDMI、DisplayPort…）。切换到其他输入会断开显示器；其「重新连接」行可将其切回。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將指標所在顯示器切換到所選輸入（HDMI、DisplayPort…）。切換到其他輸入會中斷顯示器；其「重新連線」列可將其切回。"
+          }
+        }
+      }
+    },
+    "Target Input" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目标输入"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目標輸入"
           }
         }
       }

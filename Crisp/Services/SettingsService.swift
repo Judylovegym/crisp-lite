@@ -65,7 +65,10 @@ final class SettingsService: ObservableObject, @unchecked Sendable {
         static let hidpiShortcut          = "crisp.hidpiShortcut"
         static let brightnessUpShortcut   = "crisp.brightnessUpShortcut"
         static let brightnessDownShortcut = "crisp.brightnessDownShortcut"
-        static let inputSwitchShortcut    = "crisp.inputSwitchShortcut"
+        static let inputOneShortcut       = "crisp.inputOneShortcut"
+        static let inputOneValue          = "crisp.inputOneValue"
+        static let inputTwoShortcut       = "crisp.inputTwoShortcut"
+        static let inputTwoValue          = "crisp.inputTwoValue"
         // Per-display: prefix + display UUID, since displayIDs are reused
         // across reconnects (same reason as crisp.softBrightness.uuid.*).
         static let brightnessPrefix       = "crisp.brightness.uuid."
@@ -184,17 +187,38 @@ final class SettingsService: ObservableObject, @unchecked Sendable {
         }
     }
 
-    /// Global shortcut that switches the display under the pointer to the next input
-    /// over DDC (HDMI, DisplayPort…), for monitors shared between two computers;
-    /// nil when not set. Registration is the caller's job, as above.
-    @Published var inputSwitchShortcut: KeyboardShortcut? = nil {
+    /// Global shortcuts that switch the display under the pointer to a specific
+    /// input over DDC (HDMI, DisplayPort…): slot one and slot two each bind one
+    /// combo to one input value, for a monitor shared between two computers.
+    /// The shortcuts are nil until recorded; the values default to HDMI 1 and
+    /// DisplayPort 1. Registration is the caller's job (HotkeyService), matching
+    /// how LaunchService is driven from the view.
+    @Published var inputOneShortcut: KeyboardShortcut? = nil {
         didSet {
-            if let inputSwitchShortcut, let data = try? JSONEncoder().encode(inputSwitchShortcut) {
-                defaults.set(data, forKey: Keys.inputSwitchShortcut)
+            if let inputOneShortcut, let data = try? JSONEncoder().encode(inputOneShortcut) {
+                defaults.set(data, forKey: Keys.inputOneShortcut)
             } else {
-                defaults.removeObject(forKey: Keys.inputSwitchShortcut)
+                defaults.removeObject(forKey: Keys.inputOneShortcut)
             }
         }
+    }
+
+    @Published var inputOneValue: UInt16 = 0x11 {
+        didSet { defaults.set(Int(inputOneValue), forKey: Keys.inputOneValue) }
+    }
+
+    @Published var inputTwoShortcut: KeyboardShortcut? = nil {
+        didSet {
+            if let inputTwoShortcut, let data = try? JSONEncoder().encode(inputTwoShortcut) {
+                defaults.set(data, forKey: Keys.inputTwoShortcut)
+            } else {
+                defaults.removeObject(forKey: Keys.inputTwoShortcut)
+            }
+        }
+    }
+
+    @Published var inputTwoValue: UInt16 = 0x0F {
+        didSet { defaults.set(Int(inputTwoValue), forKey: Keys.inputTwoValue) }
     }
 
     /// One combo, one action: clears `shortcut` off every other row and preset holding it
@@ -204,7 +228,8 @@ final class SettingsService: ObservableObject, @unchecked Sendable {
             if hidpiShortcut?.sameKeys(as: shortcut) == true { hidpiShortcut = nil }
             if brightnessUpShortcut?.sameKeys(as: shortcut) == true { brightnessUpShortcut = nil }
             if brightnessDownShortcut?.sameKeys(as: shortcut) == true { brightnessDownShortcut = nil }
-            if inputSwitchShortcut?.sameKeys(as: shortcut) == true { inputSwitchShortcut = nil }
+            if inputOneShortcut?.sameKeys(as: shortcut) == true { inputOneShortcut = nil }
+            if inputTwoShortcut?.sameKeys(as: shortcut) == true { inputTwoShortcut = nil }
         }
         assign(shortcut)
         if let shortcut {
@@ -292,7 +317,13 @@ final class SettingsService: ObservableObject, @unchecked Sendable {
             .flatMap { try? JSONDecoder().decode(KeyboardShortcut.self, from: $0) }
         brightnessDownShortcut = defaults.data(forKey: Keys.brightnessDownShortcut)
             .flatMap { try? JSONDecoder().decode(KeyboardShortcut.self, from: $0) }
-        inputSwitchShortcut = defaults.data(forKey: Keys.inputSwitchShortcut)
+        inputOneShortcut = defaults.data(forKey: Keys.inputOneShortcut)
             .flatMap { try? JSONDecoder().decode(KeyboardShortcut.self, from: $0) }
+        inputTwoShortcut = defaults.data(forKey: Keys.inputTwoShortcut)
+            .flatMap { try? JSONDecoder().decode(KeyboardShortcut.self, from: $0) }
+        inputOneValue = defaults.object(forKey: Keys.inputOneValue) != nil
+            ? UInt16(clamping: defaults.integer(forKey: Keys.inputOneValue)) : 0x11
+        inputTwoValue = defaults.object(forKey: Keys.inputTwoValue) != nil
+            ? UInt16(clamping: defaults.integer(forKey: Keys.inputTwoValue)) : 0x0F
     }
 }

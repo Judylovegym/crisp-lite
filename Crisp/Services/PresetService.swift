@@ -73,8 +73,11 @@ final class PresetService: ObservableObject, @unchecked Sendable {
             if SettingsService.shared.hidpiShortcut?.sameKeys(as: shortcut) == true {
                 SettingsService.shared.hidpiShortcut = nil
             }
-            if SettingsService.shared.inputSwitchShortcut?.sameKeys(as: shortcut) == true {
-                SettingsService.shared.inputSwitchShortcut = nil
+            if SettingsService.shared.inputOneShortcut?.sameKeys(as: shortcut) == true {
+                SettingsService.shared.inputOneShortcut = nil
+            }
+            if SettingsService.shared.inputTwoShortcut?.sameKeys(as: shortcut) == true {
+                SettingsService.shared.inputTwoShortcut = nil
             }
         }
         presets[index].shortcut = shortcut

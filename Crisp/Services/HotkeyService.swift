@@ -19,7 +19,7 @@ final class HotkeyService {
         case preset(UUID)
         case hidpiToggle
         case brightness(up: Bool)
-        case inputSwitch
+        case inputSwitch(to: UInt16)
     }
 
     private var handlerRef: EventHandlerRef?
@@ -73,8 +73,11 @@ final class HotkeyService {
         if let shortcut = SettingsService.shared.brightnessDownShortcut {
             register(shortcut, for: .brightness(up: false))
         }
-        if let shortcut = SettingsService.shared.inputSwitchShortcut {
-            register(shortcut, for: .inputSwitch)
+        if let shortcut = SettingsService.shared.inputOneShortcut {
+            register(shortcut, for: .inputSwitch(to: SettingsService.shared.inputOneValue))
+        }
+        if let shortcut = SettingsService.shared.inputTwoShortcut {
+            register(shortcut, for: .inputSwitch(to: SettingsService.shared.inputTwoValue))
         }
         Self.log.info("synced: \(self.registrations.count) hotkey(s) registered")
     }
@@ -140,8 +143,8 @@ final class HotkeyService {
         case .brightness(let up):
             BrightnessKeyService.shared.adjustFromShortcut(up: up)
             startRepeat(up: up)
-        case .inputSwitch:
-            Task { await switchInputUnderCursor() }
+        case .inputSwitch(let value):
+            Task { await switchInputUnderCursor(to: value) }
         case nil:
             break
         }
@@ -214,12 +217,12 @@ final class HotkeyService {
             ?? twins.max { $0.refreshRate < $1.refreshRate }
     }
 
-    /// Switches the display under the pointer to the next input over DDC (VCP 0x60):
-    /// the monitor's own input list, else the standard list, in order, past the input
-    /// it shows now — the same chain as picking a row in the Input menu. A miss beeps
-    /// like the HiDPI toggle: no display under the pointer, a monitor without DDC
-    /// input control, an unreadable current input, or a write the monitor refused.
-    func switchInputUnderCursor() async {
+    /// Switches the display under the pointer to a specific input over DDC
+    /// (VCP 0x60) — the same chain as picking a row in the Input menu. Already on
+    /// that input is a silent no-op; any miss beeps like the HiDPI toggle: no
+    /// display under the pointer, a monitor without DDC input control, an
+    /// unreadable current input, or a write the monitor refused.
+    func switchInputUnderCursor(to value: UInt16) async {
         let mouse = NSEvent.mouseLocation
         guard let screen = NSScreen.screens.first(where: { NSMouseInRect(mouse, $0.frame, false) }),
               let displayID = screen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? CGDirectDisplayID,
@@ -237,16 +240,12 @@ final class HotkeyService {
         }
         // The final list and current input, for a caller that answers once.
         await service.settle(display)
-        let options = service.options(for: display)
-        guard let current = service.macInput[display.displayUUID], !options.isEmpty else {
-            Self.log.info("input switch: current input unknown, beeping")
-            NSSound.beep()
+        if service.macInput[display.displayUUID] == value {
+            Self.log.info("input switch: display \(displayID) already on input \(value, privacy: .public), no-op")
             return
         }
-        // The next input after the current one, wrapping around at the end.
-        let target = options.firstIndex(of: current).map { options[($0 + 1) % options.count] } ?? options[0]
-        Self.log.info("input switch: display \(displayID) input \(current, privacy: .public) -> \(target, privacy: .public)")
-        if case .failure = await service.switchInput(display, to: target) {
+        Self.log.info("input switch: display \(displayID) -> input \(value, privacy: .public)")
+        if case .failure = await service.switchInput(display, to: value) {
             Self.log.info("input switch: write failed, beeping")
             NSSound.beep()
         }

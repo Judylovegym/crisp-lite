@@ -23,11 +23,11 @@ Sharp HiDPI scaling, DDC brightness, presets and virtual displays.
 
 ## This build (crisp-lite)
 
-A custom build of Crisp for a **keyboard shortcut to switch a monitor's signal input**: Settings → Keyboard Shortcuts gains a **Switch Input** row. Press it to switch the display under the pointer to its next input over DDC (HDMI, DisplayPort, USB-C…) — a monitor shared between two computers, for instance — using the monitor's own input list in order and wrapping around. Switching away disconnects the display; its Reconnect row brings it back, exactly like choosing an input from the Input menu.
+A custom build of Crisp for a **keyboard shortcut to switch a monitor's signal input**: Settings → Keyboard Shortcuts gains two **Switch Input** slots, each pairing a global shortcut with a target input of your choice (HDMI 1/2, DisplayPort 1/2, USB-C). Press a slot's shortcut to switch the display under the pointer to that slot's input over DDC — a monitor shared between two computers, for instance: shortcut one takes it to the Mac's input, shortcut two to the other computer's. Switching away disconnects the display; its Reconnect row brings it back, exactly like choosing an input from the Input menu.
 
 Changes on top of upstream [didriksg/Crisp](https://github.com/didriksg/Crisp):
 
-- **New feature** — `inputSwitchShortcut` in `SettingsService`, a `.inputSwitch` target in `HotkeyService` (`switchInputUnderCursor()`), a Shortcut row in `ShortcutsSectionView`, combo de-confliction in `PresetService`, and zh-Hans/zh-Hant strings in `Localizable.xcstrings`.
+- **New feature** — `inputOneShortcut/inputOneValue` and `inputTwoShortcut/inputTwoValue` in `SettingsService`, `.inputSwitch(to:)` targets in `HotkeyService` (`switchInputUnderCursor(to:)`), two Shortcut rows with target-input pickers in `ShortcutsSectionView`, combo de-confliction in `PresetService`, and zh-Hans/zh-Hant strings in `Localizable.xcstrings`.
 - **Build fixes for the Command Line Tools (Swift 6.1, macOS 15 SDK)** so `swiftc` builds cleanly without full Xcode:
   - `ArrangementView.swift` — `@unchecked Sendable` wrapper for `NSImage` crossing the `Task.detached` boundary.
   - `UpdateService.swift` — `nonisolated` Sparkle delegate members (upstream uses isolated-conformance syntax, which needs a newer compiler).
