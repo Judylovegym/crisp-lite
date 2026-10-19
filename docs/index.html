@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="Pb7coFWl3eF3E_6mT6jdH6sbJYJ5VY3iLoSKt-bNy2w">
+<title>Crisp: Free BetterDisplay &amp; Lunar alternative for macOS</title>
+<meta name="description" content="Crisp is a free, open-source, lightweight alternative to BetterDisplay and Lunar for macOS: DDC brightness, HiDPI scaling, presets, virtual displays, and arrangement, all in the menu bar, plus Shortcuts actions and crispctl, a command line tool for the terminal and scripts.">
+<meta property="og:title" content="Crisp: Free BetterDisplay &amp; Lunar alternative for macOS">
+<meta property="og:description" content="A free, open-source alternative to BetterDisplay and Lunar: DDC brightness, HiDPI scaling, presets, virtual displays, and arrangement, all in the menu bar, plus a command line tool.">
+<meta property="og:image" content="https://crispmac.app/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://crispmac.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Crisp: Free BetterDisplay &amp; Lunar alternative for macOS">
+<meta name="twitter:description" content="A free, open-source alternative to BetterDisplay and Lunar: DDC brightness, HiDPI scaling, presets, virtual displays, and arrangement, all in the menu bar, plus a command line tool.">
+<meta name="twitter:image" content="https://crispmac.app/og-card.png">
+<link rel="canonical" href="https://crispmac.app/">
+<link rel="alternate" hreflang="en" href="https://crispmac.app/">
+<link rel="alternate" hreflang="zh-Hans" href="https://crispmac.app/zh.html">
+<link rel="alternate" hreflang="x-default" href="https://crispmac.app/">
+<link rel="icon" href="icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Crisp","operatingSystem":"macOS 14+","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://crispmac.app/","downloadUrl":"https://github.com/didriksg/Crisp/releases/latest/download/Crisp.dmg","screenshot":"https://crispmac.app/screenshot.png","featureList":["HiDPI scaled resolutions on any external monitor","DDC/CI hardware brightness and volume control","Brightness keys for external displays","Extra Brightness using HDR and XDR headroom","Display presets with keyboard shortcuts and HDR","Display arrangement and main display switching","Virtual displays","ICC profiles, HDR toggle, gamma and gain","Input switching over DDC","Actions for the Shortcuts app","crispctl command line tool for the terminal and shell scripts"],"softwareLicense":"https://github.com/didriksg/Crisp/blob/main/LICENSE","author":{"@type":"Person","name":"Didrik Galteland","url":"https://github.com/didriksg"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"VideoObject","name":"Crisp menu bar demo","description":"A tour of Crisp, a free macOS menu bar app for HiDPI scaling, DDC brightness, presets and display arrangement.","thumbnailUrl":"https://crispmac.app/screenshot.png","uploadDate":"2026-07-31T12:00:00+02:00","contentUrl":"https://crispmac.app/demo.mp4","width":1920,"height":1080}
+</script>
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="styles.css?v=9">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="index.html"><img src="icon.png" alt="">Crisp</a>
+    <nav class="nav-links">
+      <a href="crisp-vs-betterdisplay.html">Compare</a>
+      <a href="fix-blurry-external-monitor-macos.html" class="hide-sm">Guide</a>
+      <a href="https://github.com/didriksg/Crisp">GitHub</a>
+      <a href="zh.html">中文</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <img class="icon" src="icon.png" alt="Crisp icon">
+    <h1>Every display control macOS hides, in one menu bar panel.</h1>
+    <p class="sub">Free, open-source external monitor control for your Mac: sharp scaling, hardware brightness and presets, including what BetterDisplay and Lunar charge for.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://github.com/didriksg/Crisp/releases/latest/download/Crisp.dmg">Download for macOS</a>
+      <a class="btn secondary" href="https://github.com/didriksg/Crisp">View on GitHub</a>
+    </div>
+    <div class="brew" onclick="navigator.clipboard.writeText('brew install --cask crisp');this.querySelector('.hint').textContent='copied'">
+      <span class="prompt">$</span> brew install --cask crisp
+      <span class="hint">click to copy</span>
+    </div>
+    <p class="note">Open source (MIT), listed in <a href="https://github.com/jaywcjlove/awesome-mac">awesome-mac</a>.</p>
+    <div class="frame reveal">
+      <video class="demo" src="demo.mp4" width="1920" height="1080" autoplay muted loop playsinline controls preload="metadata"></video>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap story">
+      <p>macOS treats Apple displays as first-class and everyone else's monitors as an afterthought: text renders blurry or tiny, the brightness keys go dead, and the controls that could fix it stay hidden. Crisp closes that gap, so any monitor feels first-class. <a href="fix-blurry-external-monitor-macos.html">Blurry monitor right now? Start here.</a></p>
+    </div>
+  </section>
+
+  <section class="block tint" id="features">
+    <div class="wrap">
+      <h2>One panel. Every display, dialed in.</h2>
+      <div class="grid">
+        <div class="card reveal"><h3>HiDPI on any display</h3><p>Retina-style scaled resolutions on external monitors, sharp instead of blurry or undersized, automatic on 2K+ and always at the panel's full refresh rate.</p></div>
+        <div class="card reveal"><h3>Smooth scaling</h3><p>Fine-tune how large everything looks in small steps, well beyond the handful of scaled sizes macOS offers. The flexible scaling people install BetterDisplay for, built in.</p></div>
+        <div class="card reveal"><h3>Brightness everywhere</h3><p>Hardware DDC control with software fallback, and brightness keys that dim the display under your cursor, all displays, or a subset, or shortcuts of your own.</p></div>
+        <div class="card reveal"><h3>Extra Brightness</h3><p>Push XDR MacBooks and HDR monitors past 100% by unlocking their HDR brightness reserve. The feature BetterDisplay sells as brightness upscaling, free.</p></div>
+        <div class="card reveal"><h3>Monitor volume</h3><p>Control the built-in speakers of external monitors over DDC, with a slider per display and the keyboard volume keys when the monitor is your audio output.</p></div>
+        <div class="card reveal"><h3>Presets</h3><p>Save whole display setups, resolution, brightness, arrangement, image adjustment, HDR and which displays are on, and apply them in one click, or on a schedule with Shortcuts.</p></div>
+        <div class="card reveal"><h3>Shortcuts</h3><p>Apply a preset, set brightness, HDR, image adjustment or a monitor's input, or disconnect a display, as actions in Apple's Shortcuts app. A Time of Day automation switches your displays between a day and a night setup.</p></div>
+        <div class="card reveal"><h3>Keyboard shortcuts</h3><p>Give any preset a global shortcut, plus shortcuts for brightness up and down and for toggling HiDPI on the display under your pointer. No Accessibility permission needed.</p></div>
+        <div class="card reveal"><h3>Arrangement</h3><p>Drag-to-arrange canvas, one-click main display switching, and a pointer that crosses the edges where displays of different sizes don't line up.</p></div>
+        <div class="card reveal"><h3>Disconnect displays</h3><p>Turn a display off and back on from the menu or a switch on its row, and keep the built-in off while you're docked. Apple Silicon only.</p></div>
+        <div class="card reveal"><h3>Input switching</h3><p>Switch a monitor to another input over DDC, a second computer on HDMI for instance, and back to this Mac from the menu.</p></div>
+        <div class="card reveal"><h3>Native toggles</h3><p>Flip macOS Dark Mode, Night Shift, and True Tone right from the panel, no System Settings trip.</p></div>
+        <div class="card reveal"><h3>Color</h3><p>ICC profile switching, HDR on/off per display, plus gamma, contrast, and gain adjustment.</p></div>
+        <div class="card reveal"><h3>Virtual displays</h3><p>Create HiDPI virtual screens for streaming, sidecar setups, or headless Macs.</p></div>
+        <div class="card reveal"><h3>Command line</h3><p>crispctl ships inside the app: brightness, HDR and Extra Brightness, image adjustment, presets, a monitor's input, and connecting or disconnecting a display, from the terminal or a script.</p></div>
+        <div class="card reveal"><h3>Extras</h3><p>Combined brightness slider, auto brightness sync, keep awake, notch hiding, launch at login.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2>Everything a click away in the menu bar.</h2>
+      <div class="showcase reveal">
+        <div class="frame">
+          <img class="shot" src="screenshot.png" alt="Crisp menu bar panel" width="708" height="966" loading="lazy">
+        </div>
+      </div>
+      <p style="text-align:center;color:var(--text);font-size:16px;margin:48px auto 0;max-width:600px">
+        Crisp is free, and every feature stays free. The best way to support it costs nothing: star it on GitHub or tell a friend. If you'd also like to chip in toward keeping it signed and notarized for everyone (that runs on a $99/year Apple Developer membership), there's <a href="https://github.com/sponsors/didriksg">GitHub Sponsors</a>, <a href="https://ko-fi.com/didriksg">Ko-fi</a>, and <a href="https://ifdian.net/a/didriksg">爱发电</a>.<br>
+        <span class="note">Completely optional, but you'll have my heartfelt thanks.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="block tint">
+    <div class="wrap">
+      <div class="faq-split">
+      <div>
+        <h2>FAQ</h2>
+        <p class="faq-intro">Something else? <a href="https://github.com/didriksg/Crisp/issues">Ask on GitHub</a>.</p>
+      </div>
+      <div class="prose">
+        <details>
+          <summary>Is Crisp really free?</summary>
+          <p>Yes. Every feature is free: no Pro tier, no license key, no trial, and no daily limits. The whole app is open source under the MIT license.</p>
+        </details>
+        <details>
+          <summary>Is Crisp safe to install?</summary>
+          <p>Yes. Every release is signed and notarized by Apple, the full source code is public on <a href="https://github.com/didriksg/Crisp">GitHub</a>, and a Microsoft Defender review confirmed it contains no malware and no telemetry.</p>
+        </details>
+        <details>
+          <summary>Does Crisp update itself?</summary>
+          <p>From 1.5.0 on, yes. Crisp checks once a day in the background and installs an update in one click, without sending you off to a browser. If you are on an older build you have to update by hand one last time, and it is automatic after that.</p>
+        </details>
+        <details>
+          <summary>What does Crisp require?</summary>
+          <p>macOS 14 (Sonoma) or later, on both Apple Silicon and Intel Macs. A few extras, like disconnecting a display from the menu, are Apple Silicon only.</p>
+        </details>
+        <details>
+          <summary>Can I control my displays from Shortcuts, the terminal or a script?</summary>
+          <p>Yes. Crisp ships a command line tool, <code>crispctl</code>, inside the app, and a switch in Settings links it into <code>/usr/local/bin</code>. From the terminal or a shell script you can list displays, read and set brightness, switch HDR and Extra Brightness, change image adjustment, apply a preset, switch a monitor's input, and connect or disconnect a display, by display id or UUID. The same controls are actions in the Shortcuts app, so a Time of Day automation can switch presets for day and night.</p>
+        </details>
+        <details>
+          <summary>How is Crisp different from BetterDisplay and Lunar?</summary>
+          <p>The features people usually pay for elsewhere, flexible HiDPI scaling, DDC brightness, XDR/HDR extra brightness, presets, and arrangement, are all free in Crisp. See the full side-by-side: <a href="crisp-vs-betterdisplay.html">Crisp vs BetterDisplay, Lunar &amp; MonitorControl</a>.</p>
+        </details>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>Free and open source, MIT licensed. Requires macOS 14 or later.</p>
+      <p>Began as a fork of <a href="https://github.com/huberdf/FreeDisplay">FreeDisplay</a>, thanks for the spark.</p>
+      <p>Compare: <a href="crisp-vs-betterdisplay.html">Crisp vs BetterDisplay, Lunar &amp; MonitorControl</a></p>
+      <p>Guide: <a href="fix-blurry-external-monitor-macos.html">Why is my external monitor blurry or tiny on a Mac?</a></p>
+      <p><a href="mac-hidpi.html">中文指南：为什么外接显示器在 Mac 上发虚，以及怎么修</a></p>
+    </div>
+  </footer>
+</main>
+
+<script>
+  var els = document.querySelectorAll('.reveal');
+  if (window.IntersectionObserver && els.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  } else {
+    els.forEach(function (el) { el.classList.add('in'); });
+  }
+  (function () {
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.prose details').forEach(function (d) {
+      var s = d.querySelector('summary'), a = null;
+      s.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (a) a.cancel();
+        var opening = !d.open;
+        d.classList.toggle('faq-open', opening);
+        if (reduce) { d.open = opening; return; }
+        if (opening) {
+          d.open = true;
+          a = d.animate([{ height: s.offsetHeight + 'px' }, { height: d.scrollHeight + 'px' }], { duration: 260, easing: 'ease' });
+          a.onfinish = function () { a = null; };
+        } else {
+          a = d.animate([{ height: d.offsetHeight + 'px' }, { height: s.offsetHeight + 'px' }], { duration: 240, easing: 'ease', fill: 'forwards' });
+          a.onfinish = function () { d.open = false; a.cancel(); a = null; };
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+import Darwin
+import Foundation
+private struct ClientFailure: Error { let message: String }
+/// --json prints the server's reply as it came, for scripts and agents; without it,
+/// text for people (#227). It may stand anywhere among the arguments.
+private let jsonOutput = CommandLine.arguments.contains("--json")
+private func systemFailure(_ operation: String) -> ClientFailure {
+    ClientFailure(message: "control socket \(operation) failed: \(String(cString: strerror(errno)))")
+}
+private func connectToCrisp(receiveTimeoutSeconds: Int) throws -> Int32 {
+    let path = CrispControlSocket.path
+    guard path.utf8.count < MemoryLayout.size(ofValue: sockaddr_un().sun_path) else {
+        throw ClientFailure(message: "control socket path is too long")
+    }
+    var info = stat()
+    guard lstat(path, &info) == 0,
+          info.st_uid == geteuid(), info.st_mode & S_IFMT == S_IFSOCK else {
+        throw ClientFailure(message: "Crisp control socket is unavailable or untrusted")
+    }
+    let client = Darwin.socket(AF_UNIX, SOCK_STREAM, 0)
+    guard client >= 0 else { throw systemFailure("creation") }
+    do {
+        var receiveTimeout = timeval(tv_sec: receiveTimeoutSeconds, tv_usec: 0)
+        var sendTimeout = timeval(tv_sec: 2, tv_usec: 0)
+        let timeoutSize = socklen_t(MemoryLayout<timeval>.size)
+        var enabled: Int32 = 1
+        guard setsockopt(client, SOL_SOCKET, SO_RCVTIMEO, &receiveTimeout, timeoutSize) == 0,
+              setsockopt(client, SOL_SOCKET, SO_SNDTIMEO, &sendTimeout, timeoutSize) == 0,
+              setsockopt(
+                  client,
+                  SOL_SOCKET,
+                  SO_NOSIGPIPE,
+                  &enabled,
+                  socklen_t(MemoryLayout<Int32>.size)
+              ) == 0 else { throw systemFailure("configuration") }
+        var address = sockaddr_un()
+        address.sun_len = UInt8(MemoryLayout<sockaddr_un>.size)
+        address.sun_family = sa_family_t(AF_UNIX)
+        withUnsafeMutableBytes(of: &address.sun_path) { bytes in
+            path.withCString {
+                bytes.baseAddress?.copyMemory(from: $0, byteCount: path.utf8.count + 1)
+            }
+        }
+        let connected = withUnsafePointer(to: &address) { pointer in
+            pointer.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                Darwin.connect(client, $0, socklen_t(MemoryLayout<sockaddr_un>.size))
+            }
+        }
+        guard connected == 0 else { throw systemFailure("connect") }
+        var peerUser: uid_t = 0
+        var peerGroup: gid_t = 0
+        guard getpeereid(client, &peerUser, &peerGroup) == 0, peerUser == geteuid() else {
+            throw ClientFailure(message: "control socket peer is untrusted")
+        }
+        return client
+    } catch {
+        Darwin.close(client)
+        throw error
+    }
+}
+private func send(_ data: Data, to client: Int32) throws {
+    try data.withUnsafeBytes { bytes in
+        guard var pointer = bytes.baseAddress else { return }
+        var remaining = bytes.count
+        while remaining > 0 {
+            let count = Darwin.send(client, pointer, remaining, 0)
+            if count > 0 {
+                pointer = pointer.advanced(by: count)
+                remaining -= count
+            } else if count < 0, errno == EINTR {
+                continue
+            } else { throw systemFailure("write") }
+        }
+    }
+}
+private func receive(from client: Int32) throws -> Data {
+    var data = Data()
+    var buffer = [UInt8](repeating: 0, count: 4_096)
+    while true {
+        let count = Darwin.recv(client, &buffer, buffer.count, 0)
+        if count > 0 { data.append(contentsOf: buffer.prefix(Int(count))) }
+        let result = CrispControlFrame.parse(
+            data,
+            maximumBytes: 64 * 1_024,
+            endOfStream: count == 0
+        )
+        switch result {
+        case let .frame(frame): return frame
+        case let .failure(message): throw ClientFailure(message: message)
+        case .incomplete:
+            if count < 0, errno != EINTR { throw systemFailure("read") }
+        }
+    }
+}
+private func fail(_ message: String, code: Int32) -> Never {
+    FileHandle.standardError.write(jsonOutput ? CrispControlModel.encode(.failure(message)) : Data("error: \(message)\n".utf8))
+    Darwin.exit(code)
+}
+/// The version of the Crisp this tool ships inside: crispctl lives at
+/// Crisp.app/Contents/MacOS/crispctl, so the app's Info.plist is two levels up from
+/// the executable once the /usr/local/bin link is resolved.
+private func bundledVersion() -> String {
+    guard let executable = Bundle.main.executableURL?.resolvingSymlinksInPath() else { return "unknown" }
+    let plist = executable.deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("Info.plist")
+    guard let info = NSDictionary(contentsOf: plist), let version = info["CFBundleShortVersionString"] as? String else {
+        return "unknown (not inside Crisp.app)"
+    }
+    return version
+}
+/// Writes the skill where the agent reads it and prints the path. Overwrites an
+/// older copy, so running it again after an update refreshes it.
+private func installSkill(for agent: String) -> Never {
+    let file = FileManager.default.homeDirectoryForCurrentUser
+        .appendingPathComponent(CrispControlCLIModel.skillFolders[agent] ?? "")
+        .appendingPathComponent("crispctl/SKILL.md")
+    do {
+        try FileManager.default.createDirectory(at: file.deletingLastPathComponent(), withIntermediateDirectories: true)
+        try Data(CrispControlSkill.text.utf8).write(to: file, options: .atomic)
+    } catch {
+        fail("could not write \(file.path): \(error.localizedDescription)", code: 1)
+    }
+    print("Installed \(file.path)")
+    Darwin.exit(EXIT_SUCCESS)
+}
+let request: CrispControlRequest
+switch CrispControlCLIModel.parse(arguments: CommandLine.arguments.dropFirst().filter { $0 != "--json" }) {
+case let .request(value): request = value
+case let .help(topic):
+    switch topic {
+    case .all: print(CrispControlCLIModel.help)
+    case let .group(group): print(CrispControlCLIModel.help(for: group))
+    case let .command(entry): print(CrispControlCLIModel.help(for: entry))
+    }
+    Darwin.exit(EXIT_SUCCESS)
+case .version:
+    print("crispctl \(bundledVersion())")
+    Darwin.exit(EXIT_SUCCESS)
+case .showSkill:
+    print(CrispControlSkill.text, terminator: "")
+    Darwin.exit(EXIT_SUCCESS)
+case let .installSkill(agent):
+    installSkill(for: agent)
+case let .failure(message): fail(message, code: 2)
+}
+do {
+    let client = try connectToCrisp(
+        receiveTimeoutSeconds: CrispControlCLIModel.receiveTimeoutSeconds(for: request.command)
+    )
+    defer { Darwin.close(client) }
+    try send(CrispControlModel.encode(request, sorted: true), to: client)
+    let response: Data
+    do {
+        response = try receive(from: client)
+    } catch {
+        switch request.command {
+        case .setHDR:
+            fail("HDR response timed out or was lost; \(CrispControlModel.hdrUncertainRecovery)", code: 1)
+        case .toggleDisplay:
+            fail("toggle response timed out or was lost; the display may already have changed state, "
+                 + "run 'display list' before retrying", code: 1)
+        default:
+            throw error
+        }
+    }
+    switch CrispControlCLIModel.classify(response, for: request.command) {
+    case .success:
+        if jsonOutput {
+            FileHandle.standardOutput.write(response)
+        } else if let decoded = try? JSONDecoder().decode(CrispControlResponse.self, from: response) {
+            let text = CrispControlText.render(decoded, for: request.command)
+            if !text.isEmpty { print(text) }
+        }
+        Darwin.exit(EXIT_SUCCESS)
+    case .serverFailure:
+        if jsonOutput {
+            FileHandle.standardOutput.write(response)
+            Darwin.exit(3)
+        }
+        fail((try? JSONDecoder().decode(CrispControlResponse.self, from: response))?.error ?? "", code: 3)
+    case .invalid:
+        throw ClientFailure(message: "server returned invalid response")
+    }
+} catch let failure as ClientFailure {
+    fail(failure.message, code: 1)
+} catch {
+    fail(error.localizedDescription, code: 1)
+}

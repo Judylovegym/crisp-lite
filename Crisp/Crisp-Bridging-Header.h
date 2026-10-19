@@ -1,0 +1,142 @@
+//
+//  Crisp-Bridging-Header.h
+//  Crisp
+//
+//  Private API declarations for CGVirtualDisplay and IOAVService.
+//  Property names verified against Chromium's virtual_display_mac_util.mm.
+//
+
+#ifndef Crisp_Bridging_Header_h
+#define Crisp_Bridging_Header_h
+
+#import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
+
+// MARK: - CGVirtualDisplay Private API (macOS 14+)
+
+@interface CGVirtualDisplayDescriptor : NSObject
+@property (nonatomic) CGSize   sizeInMillimeters;
+@property (nonatomic) uint32_t maxPixelsWide;
+@property (nonatomic) uint32_t maxPixelsHigh;
+@property (nonatomic) NSPoint  whitePoint;
+@property (nonatomic) NSPoint  redPrimary;
+@property (nonatomic) NSPoint  greenPrimary;
+@property (nonatomic) NSPoint  bluePrimary;
+@property (nonatomic) dispatch_queue_t queue;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic) uint32_t vendorID;
+@property (nonatomic) uint32_t productID;
+@property (nonatomic) uint32_t serialNum;
+@end
+
+@interface CGVirtualDisplayMode : NSObject
+- (instancetype)initWithWidth:(NSUInteger)width
+                       height:(NSUInteger)height
+                  refreshRate:(double)refreshRate;
+@property (nonatomic, readonly) NSUInteger width;
+@property (nonatomic, readonly) NSUInteger height;
+@property (nonatomic, readonly) double     refreshRate;
+@end
+
+@interface CGVirtualDisplaySettings : NSObject
+@property (nonatomic) BOOL hiDPI;
+@property (nonatomic, copy) NSArray *modes;
+@end
+
+@interface CGVirtualDisplay : NSObject
+- (instancetype)initWithDescriptor:(CGVirtualDisplayDescriptor *)descriptor;
+- (BOOL)applySettings:(CGVirtualDisplaySettings *)settings;
+@property (nonatomic, readonly) CGDirectDisplayID displayID;
+@end
+
+// MARK: - CGSDisplayMode (advanced resolution switching)
+
+typedef struct {
+    uint32_t modeID;
+    uint32_t width;
+    uint32_t height;
+    uint32_t depth;
+    double   refreshRate;
+    uint32_t flags;        // bit 0x20000 = HiDPI
+} CGSDisplayMode;
+
+typedef int CGSConnectionID_t;
+// arg1 is a CONFIG TOKEN from CGBeginDisplayConfiguration, NOT the connection id:
+// passing the connection id segfaults in checkCapacity() on macOS 26. Sequence:
+// CGBeginDisplayConfiguration -> this -> CGCompleteDisplayConfiguration.
+extern CGError CGSConfigureDisplayMode(CGDisplayConfigRef config, CGDirectDisplayID display, int32_t modeNumber);
+extern CGSConnectionID_t CGSMainConnectionID(void);
+
+// CGDisplayCopyAllDisplayModes hides GPU-scaled HiDPI variants that collide
+// with a real EDID timing; this private list still carries them. Layout
+// reverse-engineered, offsets verified at runtime. modeNumber == ioDisplayModeID
+// (pass to CGSConfigureDisplayMode).
+typedef struct {
+    uint32_t modeNumber;   // 0
+    uint32_t flags;        // 4, bit 0x40000000 = unusable (isUsableForDesktopGUI == false)
+    uint32_t width;        // 8   logical
+    uint32_t height;       // 12  logical
+    uint32_t depth;        // 16
+    uint32_t dc2[42];      // 20
+    uint16_t dc3;          // 188
+    uint16_t freq;         // 190 refresh in Hz
+    uint32_t dc4[4];       // 192
+    float    density;      // 208 backing scale, 2.0 = HiDPI
+} CGSDisplayModeDescription;   // 212 bytes
+
+extern CGError CGSGetNumberOfDisplayModes(CGDirectDisplayID display, int *nModes);
+extern CGError CGSGetDisplayModeDescriptionOfLength(CGDirectDisplayID display, int idx,
+                                                    CGSDisplayModeDescription *mode, int length);
+
+// MARK: - SkyLight Private API (physical display disconnect/reconnect, Apple Silicon)
+
+// Enable/disable an individual display inside a CGBeginDisplayConfiguration transaction.
+// On Apple Silicon (macOS 13+) disabling performs a true hardware disconnect (identical to
+// clamshell): the display is removed from CGGetOnlineDisplayList / CGGetActiveDisplayList.
+extern CGError SLSConfigureDisplayEnabled(CGDisplayConfigRef config,
+                                          CGDirectDisplayID display,
+                                          bool enabled);
+
+// Enumerates ALL displays including ones disabled via SLSConfigureDisplayEnabled. Required to
+// recover a disabled display's ID for reconnect, since CGGetOnlineDisplayList omits it.
+extern CGError SLSGetDisplayList(uint32_t maxDisplays,
+                                 CGDirectDisplayID *displays,
+                                 uint32_t *displayCount);
+
+// Sets a display's rotation (public CGDisplayRotation only reads it); the old
+// IOServiceRequestProbe route does nothing on a DCP-driven display. Takes
+// degrees (0, 90, 180, 270), outside any CGBeginDisplayConfiguration transaction.
+extern CGError SLSSetDisplayRotation(CGDirectDisplayID display, int rotation);
+
+// MARK: - IOAVService Private API (Apple Silicon DDC)
+
+typedef void * IOAVServiceRef;
+extern IOAVServiceRef IOAVServiceCreate(CFAllocatorRef allocator);
+extern IOAVServiceRef IOAVServiceCreateWithService(CFAllocatorRef allocator, io_service_t service);
+extern IOReturn IOAVServiceReadI2C(IOAVServiceRef service,
+                                   uint32_t chipAddress,
+                                   uint32_t offset,
+                                   void *outputBuffer,
+                                   uint32_t outputBufferSize);
+extern IOReturn IOAVServiceWriteI2C(IOAVServiceRef service,
+                                    uint32_t chipAddress,
+                                    uint32_t dataAddress,
+                                    void *inputBuffer,
+                                    uint32_t inputBufferSize);
+
+// MARK: - NSGlassEffectView compatibility (macOS 26 Liquid Glass)
+
+// NSGlassEffectView ships only with the macOS 26 SDK; older SDKs compile against
+// this interface stub, whose implementation lives in CrispCompat.m (swiftc does
+// not emit @implementations from the bridging header, so the class symbol must
+// come from the clang-compiled object). Every use site is gated by
+// #available(macOS 26.0, *) or a runtime responder check, so the stub is never
+// instantiated on older systems.
+#if __MAC_OS_X_VERSION_MAX_ALLOWED < 260000
+#import <AppKit/AppKit.h>
+@interface NSGlassEffectView : NSView
+@property CGFloat cornerRadius;
+@end
+#endif
+
+#endif /* Crisp_Bridging_Header_h */

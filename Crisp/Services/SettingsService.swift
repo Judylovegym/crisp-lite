@@ -1,0 +1,298 @@
+import Foundation
+import CoreGraphics
+import Combine
+
+/// Which displays the hardware brightness keys act on.
+/// Persisted (raw value) via `SettingsService.brightnessKeyTarget`.
+enum BrightnessKeyTarget: String, CaseIterable, Codable {
+    case underCursor   // only the display under the pointer (current behaviour)
+    case allDisplays   // every connected display
+    case selected      // only a user-chosen subset (see brightnessKeySelectedDisplays)
+}
+
+/// Centralized settings persistence service.
+/// Simple settings use UserDefaults via @AppStorage-compatible keys.
+/// Complex configurations are stored as JSON in ~/Library/Application Support/Crisp/.
+@MainActor
+final class SettingsService: ObservableObject, @unchecked Sendable {
+    static let shared = SettingsService()
+
+    private let defaults = UserDefaults.standard
+    private let supportDir: URL = {
+        let base = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        let dir = base.appendingPathComponent("Crisp", isDirectory: true)
+        // One-time migration from the pre-rename storage folder.
+        let legacy = base.appendingPathComponent("FreeDisplay", isDirectory: true)
+        if !FileManager.default.fileExists(atPath: dir.path),
+           FileManager.default.fileExists(atPath: legacy.path) {
+            try? FileManager.default.moveItem(at: legacy, to: dir)
+        }
+        try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        return dir
+    }()
+
+    private init() {
+        loadAll()
+        // Re-sync launch-at-login from SMAppService on every panel open (no OS notification
+        // exists for login-item changes), so an external toggle reflects without a relaunch.
+        NotificationCenter.default.addObserver(
+            forName: .crispPanelDidOpen, object: nil, queue: .main
+        ) { [weak self] _ in
+            Task { @MainActor in
+                guard let self else { return }
+                let actual = LaunchService.shared.isEnabled
+                if self.launchAtLogin != actual { self.launchAtLogin = actual }
+            }
+        }
+    }
+
+    // MARK: - Keys
+
+    private enum Keys {
+        static let launchAtLogin          = "crisp.launchAtLogin"
+        static let launchAtLoginPrompted  = "crisp.launchAtLogin.prompted"
+        static let menuWidth              = "crisp.menuWidth"
+        static let showCombinedBrightness = "crisp.showCombinedBrightness"
+        static let combinedBuiltinFactor  = "crisp.combinedBuiltinBrightnessAdjustment"
+        static let showVolumeSliders      = "crisp.showVolumeSliders"
+        static let showConnectionSwitches = "crisp.showConnectionSwitches"
+        static let crossDisplayGaps       = "crisp.crossDisplayGaps"
+        static let disconnectBuiltinWhenDocked = "crisp.disconnectBuiltinWhenDocked"
+        static let ddcCacheTTL            = "crisp.ddcCacheTTL"
+        static let colorPickerHistory     = "crisp.colorPickerHistory"
+        static let brightnessKeyTarget    = "crisp.brightnessKeyTarget"
+        static let brightnessKeySelected  = "crisp.brightnessKeySelectedDisplays"
+        static let hidpiShortcut          = "crisp.hidpiShortcut"
+        static let brightnessUpShortcut   = "crisp.brightnessUpShortcut"
+        static let brightnessDownShortcut = "crisp.brightnessDownShortcut"
+        static let inputSwitchShortcut    = "crisp.inputSwitchShortcut"
+        // Per-display: prefix + display UUID, since displayIDs are reused
+        // across reconnects (same reason as crisp.softBrightness.uuid.*).
+        static let brightnessPrefix       = "crisp.brightness.uuid."
+    }
+
+    // MARK: - Published Settings
+
+    @Published var launchAtLogin: Bool = false {
+        didSet { defaults.set(launchAtLogin, forKey: Keys.launchAtLogin) }
+    }
+
+    /// Whether the first-launch "enable Launch at Login?" prompt has been shown.
+    @Published var launchAtLoginPrompted: Bool = false {
+        didSet { defaults.set(launchAtLoginPrompted, forKey: Keys.launchAtLoginPrompted) }
+    }
+
+    @Published var menuWidth: Double = 320 {
+        didSet { defaults.set(menuWidth, forKey: Keys.menuWidth) }
+    }
+
+    @Published var showCombinedBrightness: Bool = true {
+        didSet { defaults.set(showCombinedBrightness, forKey: Keys.showCombinedBrightness) }
+    }
+
+    /// Fine tuning on top of the absolute-luminance match. 1.0 means equal
+    /// estimated nits; lower values dim the built-in relative to externals.
+    @Published var combinedBuiltinBrightnessFactor: Double = CombinedBrightnessMath.defaultBuiltinAdjustment {
+        didSet { defaults.set(combinedBuiltinBrightnessFactor, forKey: Keys.combinedBuiltinFactor) }
+    }
+
+    /// Volume sliders for DDC-volume monitors. Hiding them only affects the
+    /// panel; the volume keys keep routing to the monitor.
+    @Published var showVolumeSliders: Bool = true {
+        didSet { defaults.set(showVolumeSliders, forKey: Keys.showVolumeSliders) }
+    }
+
+    /// A switch on each display row that disconnects and reconnects it (#103). Off by
+    /// default: a control that blanks a screen does not belong under a stray click.
+    @Published var showConnectionSwitches: Bool = false {
+        didSet { defaults.set(showConnectionSwitches, forKey: Keys.showConnectionSwitches) }
+    }
+
+    /// Pointer moves past display edges with no display behind them. Also starts and stops
+    /// EdgeCrossingService, at launch through loadAll.
+    @Published var crossDisplayGaps: Bool = false {
+        didSet {
+            defaults.set(crossDisplayGaps, forKey: Keys.crossDisplayGaps)
+            EdgeCrossingService.shared.setEnabled(crossDisplayGaps)
+        }
+    }
+
+    /// Off by default: the built-in goes off while an external is lit. The row starts and
+    /// ends it (PhysicalDisplayToggleService), not this didSet, which also runs in loadAll.
+    @Published var disconnectBuiltinWhenDocked: Bool = false {
+        didSet { defaults.set(disconnectBuiltinWhenDocked, forKey: Keys.disconnectBuiltinWhenDocked) }
+    }
+
+    @Published var ddcCacheTTL: Double = 5.0 {
+        didSet { defaults.set(ddcCacheTTL, forKey: Keys.ddcCacheTTL) }
+    }
+
+    /// Recently sampled colors (hex strings, newest first, max 20).
+    @Published var colorPickerHistory: [String] = [] {
+        didSet {
+            defaults.set(colorPickerHistory, forKey: Keys.colorPickerHistory)
+        }
+    }
+
+    /// Which displays the brightness keys act on. Default: the display under the cursor.
+    @Published var brightnessKeyTarget: BrightnessKeyTarget = .underCursor {
+        didSet { defaults.set(brightnessKeyTarget.rawValue, forKey: Keys.brightnessKeyTarget) }
+    }
+
+    /// Displays chosen for the `.selected` brightness-key mode, stored by stable
+    /// DisplayInfo.displayUUID (not the volatile CGDirectDisplayID, which macOS can
+    /// reassign across reconnects). Ignored unless brightnessKeyTarget == .selected.
+    @Published var brightnessKeySelectedDisplayUUIDs: Set<String> = [] {
+        didSet {
+            defaults.set(Array(brightnessKeySelectedDisplayUUIDs), forKey: Keys.brightnessKeySelected)
+        }
+    }
+
+    /// Global shortcut that toggles the display under the pointer between HiDPI and
+    /// low resolution; nil when not set. Registration is the caller's job
+    /// (HotkeyService.syncRegistrations), matching how LaunchService is driven from the view.
+    @Published var hidpiShortcut: KeyboardShortcut? = nil {
+        didSet {
+            if let hidpiShortcut, let data = try? JSONEncoder().encode(hidpiShortcut) {
+                defaults.set(data, forKey: Keys.hidpiShortcut)
+            } else {
+                defaults.removeObject(forKey: Keys.hidpiShortcut)
+            }
+        }
+    }
+
+    /// Global shortcuts that step brightness up and down exactly as the brightness
+    /// keys do, for keyboards without those keys or with them taken (issue #160);
+    /// nil when not set. Registration is the caller's job, as above.
+    @Published var brightnessUpShortcut: KeyboardShortcut? = nil {
+        didSet {
+            if let brightnessUpShortcut, let data = try? JSONEncoder().encode(brightnessUpShortcut) {
+                defaults.set(data, forKey: Keys.brightnessUpShortcut)
+            } else {
+                defaults.removeObject(forKey: Keys.brightnessUpShortcut)
+            }
+        }
+    }
+
+    @Published var brightnessDownShortcut: KeyboardShortcut? = nil {
+        didSet {
+            if let brightnessDownShortcut, let data = try? JSONEncoder().encode(brightnessDownShortcut) {
+                defaults.set(data, forKey: Keys.brightnessDownShortcut)
+            } else {
+                defaults.removeObject(forKey: Keys.brightnessDownShortcut)
+            }
+        }
+    }
+
+    /// Global shortcut that switches the display under the pointer to the next input
+    /// over DDC (HDMI, DisplayPort…), for monitors shared between two computers;
+    /// nil when not set. Registration is the caller's job, as above.
+    @Published var inputSwitchShortcut: KeyboardShortcut? = nil {
+        didSet {
+            if let inputSwitchShortcut, let data = try? JSONEncoder().encode(inputSwitchShortcut) {
+                defaults.set(data, forKey: Keys.inputSwitchShortcut)
+            } else {
+                defaults.removeObject(forKey: Keys.inputSwitchShortcut)
+            }
+        }
+    }
+
+    /// One combo, one action: clears `shortcut` off every other row and preset holding it
+    /// (Carbon refuses a second registration of the same combo), then `assign` gives it here.
+    func assignStaticShortcut(_ shortcut: KeyboardShortcut?, assign: (KeyboardShortcut?) -> Void) {
+        if let shortcut {
+            if hidpiShortcut?.sameKeys(as: shortcut) == true { hidpiShortcut = nil }
+            if brightnessUpShortcut?.sameKeys(as: shortcut) == true { brightnessUpShortcut = nil }
+            if brightnessDownShortcut?.sameKeys(as: shortcut) == true { brightnessDownShortcut = nil }
+            if inputSwitchShortcut?.sameKeys(as: shortcut) == true { inputSwitchShortcut = nil }
+        }
+        assign(shortcut)
+        if let shortcut {
+            PresetService.shared.stealShortcutFromPresets(shortcut)  // persists and syncs
+        } else {
+            HotkeyService.shared.syncRegistrations()
+        }
+    }
+
+    // MARK: - Per-Display Settings
+
+    /// Last known brightness of a physical display, used to seed the slider on
+    /// reconnect until a DDC read lands. Nil for a display never seen before.
+    func brightness(forDisplayUUID uuid: String) -> Double? {
+        let key = Keys.brightnessPrefix + uuid
+        guard defaults.object(forKey: key) != nil else { return nil }
+        return defaults.double(forKey: key)
+    }
+
+    func setBrightness(_ value: Double, forDisplayUUID uuid: String) {
+        defaults.set(value, forKey: Keys.brightnessPrefix + uuid)
+    }
+
+    // MARK: - Color History
+
+    func addColorToHistory(_ hex: String) {
+        var history = colorPickerHistory.filter { $0 != hex }
+        history.insert(hex, at: 0)
+        if history.count > 20 { history = Array(history.prefix(20)) }
+        colorPickerHistory = history
+    }
+
+    // MARK: - JSON Persistence Helpers
+
+    func save<T: Encodable>(_ value: T, filename: String) {
+        let url = supportDir.appendingPathComponent(filename)
+        do {
+            let data = try JSONEncoder().encode(value)
+            try data.write(to: url, options: .atomic)
+        } catch {
+            // best-effort persistence; a failed write is non-fatal
+        }
+    }
+
+    func load<T: Decodable>(_ type: T.Type, filename: String) -> T? {
+        let url = supportDir.appendingPathComponent(filename)
+        guard let data = try? Data(contentsOf: url) else { return nil }
+        return try? JSONDecoder().decode(type, from: data)
+    }
+
+    // MARK: - Load All
+
+    private func loadAll() {
+        // Authoritative SMAppService state, not just UserDefaults, in case the user toggled
+        // it externally or after a fresh install.
+        launchAtLogin = LaunchService.shared.isEnabled
+        launchAtLoginPrompted = defaults.bool(forKey: Keys.launchAtLoginPrompted)
+        menuWidth = defaults.object(forKey: Keys.menuWidth) != nil
+            ? defaults.double(forKey: Keys.menuWidth) : 320
+        showCombinedBrightness = defaults.object(forKey: Keys.showCombinedBrightness) != nil
+            ? defaults.bool(forKey: Keys.showCombinedBrightness) : true
+        if defaults.object(forKey: Keys.combinedBuiltinFactor) != nil {
+            let storedFactor = defaults.double(forKey: Keys.combinedBuiltinFactor)
+            combinedBuiltinBrightnessFactor = storedFactor.isFinite
+                ? min(CombinedBrightnessMath.builtinAdjustmentRange.upperBound,
+                      max(CombinedBrightnessMath.builtinAdjustmentRange.lowerBound, storedFactor))
+                : CombinedBrightnessMath.defaultBuiltinAdjustment
+        } else {
+            combinedBuiltinBrightnessFactor = CombinedBrightnessMath.defaultBuiltinAdjustment
+        }
+        showVolumeSliders = defaults.object(forKey: Keys.showVolumeSliders) != nil
+            ? defaults.bool(forKey: Keys.showVolumeSliders) : true
+        showConnectionSwitches = defaults.bool(forKey: Keys.showConnectionSwitches)
+        crossDisplayGaps = defaults.bool(forKey: Keys.crossDisplayGaps)
+        disconnectBuiltinWhenDocked = defaults.bool(forKey: Keys.disconnectBuiltinWhenDocked)
+        ddcCacheTTL = defaults.object(forKey: Keys.ddcCacheTTL) != nil
+            ? defaults.double(forKey: Keys.ddcCacheTTL) : 5.0
+        colorPickerHistory = defaults.stringArray(forKey: Keys.colorPickerHistory) ?? []
+        brightnessKeyTarget = defaults.string(forKey: Keys.brightnessKeyTarget)
+            .flatMap(BrightnessKeyTarget.init(rawValue:)) ?? .underCursor
+        brightnessKeySelectedDisplayUUIDs = Set(defaults.stringArray(forKey: Keys.brightnessKeySelected) ?? [])
+        hidpiShortcut = defaults.data(forKey: Keys.hidpiShortcut)
+            .flatMap { try? JSONDecoder().decode(KeyboardShortcut.self, from: $0) }
+        brightnessUpShortcut = defaults.data(forKey: Keys.brightnessUpShortcut)
+            .flatMap { try? JSONDecoder().decode(KeyboardShortcut.self, from: $0) }
+        brightnessDownShortcut = defaults.data(forKey: Keys.brightnessDownShortcut)
+            .flatMap { try? JSONDecoder().decode(KeyboardShortcut.self, from: $0) }
+        inputSwitchShortcut = defaults.data(forKey: Keys.inputSwitchShortcut)
+            .flatMap { try? JSONDecoder().decode(KeyboardShortcut.self, from: $0) }
+    }
+}

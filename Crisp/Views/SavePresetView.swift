@@ -1,0 +1,606 @@
+import SwiftUI
+import CoreGraphics
+
+// MARK: - SavePresetView
+
+/// Section in MenuBarView that lets users save the current display state as a
+/// named preset. Collapsed, it's a single "New Preset" row; expanded, the row
+/// is replaced by a bounded card with its own Cancel / Save buttons.
+struct SavePresetView: View {
+    @Binding var isShowingForm: Bool
+    @State private var isHovered = false
+    @FocusState private var nameFocused: Bool
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            // Fades row/card on the panel spring so nothing ghosts through glass mid-reveal.
+            if isShowingForm {
+                SavePresetForm(
+                    onClose: { withAnimation(.panelResize) { isShowingForm = false } },
+                    nameFocused: $nameFocused
+                )
+                    .padding(.horizontal, 12)
+                    .padding(.top, 2)
+                    .padding(.bottom, 8)
+                    .transition(.opacity)
+            } else {
+                Button(action: {
+                    // Focus via the reveal's completion handler, not a timer.
+                    withAnimation(.panelResize) {
+                        isShowingForm = true
+                    } completion: {
+                        nameFocused = true
+                    }
+                }) {
+                    HStack {
+                        MenuItemIcon(systemName: "plus", color: .blue, glyphSize: 14)
+                        Text("New Preset")
+                            .font(.body)
+                        Spacer()
+                    }
+                    // Padding inside the label so the tappable area matches the hover highlight.
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 3)
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .menuRowHover(isHovered)
+                .onHover { isHovered = $0 }
+                .transition(.opacity)
+            }
+        }
+        // Collapse the form when the panel closes so it reopens fresh (fires while hidden).
+        .onReceive(NotificationCenter.default.publisher(for: .crispPanelDidClose)) { _ in
+            isShowingForm = false
+        }
+    }
+}
+
+// MARK: - SavePresetForm
+
+/// Bounded card for naming and saving the current display state as a preset.
+/// Icon + color are tucked behind the icon button so the common case (name it,
+/// save) stays short.
+struct SavePresetForm: View {
+    /// nil = creating a new preset (captures current state on save); non-nil =
+    /// editing an existing one (updates its identity + capture inclusions).
+    var editing: DisplayPreset? = nil
+    let onClose: () -> Void
+
+    @State private var presetName: String = ""
+    @State private var selectedIcon: String = "display"
+    @State private var selectedColor: String = "blue"
+    @State private var includeResolution: Bool = true
+    @State private var includeBrightness: Bool = true
+    @State private var includeArrangement: Bool = true
+    @State private var includeImageAdjustment: Bool = false
+    @State private var includeHDR: Bool = false
+    @State private var includeConnection: Bool = false
+    /// Edit mode only: when on, Save re-captures current values instead of stored ones.
+    @State private var recaptureValues: Bool = false
+    /// Global shortcut for this preset, held here until Save like name and icon
+    /// (#61); works at creation time too since this form is also the New Preset form.
+    @State private var recordedShortcut: KeyboardShortcut? = nil
+    @State private var showIdentityPicker: Bool = false
+    @State private var isSaving: Bool = false
+    @State private var saveError: String?
+    /// Owned by the parent so it can focus via the reveal's completion handler
+    /// instead of mid-reveal, which janks the transition.
+    @FocusState.Binding var nameFocused: Bool
+
+    init(editing: DisplayPreset? = nil,
+         onClose: @escaping () -> Void,
+         nameFocused: FocusState<Bool>.Binding) {
+        self.editing = editing
+        self.onClose = onClose
+        self._nameFocused = nameFocused
+        _presetName = State(initialValue: editing?.name ?? "")
+        _selectedIcon = State(initialValue: editing?.icon ?? "display")
+        _selectedColor = State(initialValue: editing?.colorName ?? "blue")
+        _includeResolution = State(initialValue: editing?.includesResolution ?? true)
+        _includeBrightness = State(initialValue: editing?.includesBrightness ?? true)
+        _includeArrangement = State(initialValue: editing?.includesArrangement ?? true)
+        _includeImageAdjustment = State(initialValue: editing?.includesImageAdjustment
+                                        ?? PresetService.shared.anyImageAdjustment)
+        _includeHDR = State(initialValue: editing?.includesHDR ?? false)
+        // On when a display is off now: that is what such a preset is saved for.
+        _includeConnection = State(initialValue: editing?.includesConnection
+                                   ?? !PhysicalDisplayToggleService.shared.disconnected.isEmpty)
+        _recordedShortcut = State(initialValue: editing?.shortcut)
+    }
+
+    private var nothingSelected: Bool {
+        !includeResolution && !includeBrightness && !includeArrangement && !includeImageAdjustment
+            && !includeHDR && !includeConnection
+    }
+
+    /// Stored resolution shown inline only for a single display (clean and
+    /// unambiguous); with several, per-display specifics live in the arrangement balloon.
+    private var resolutionDetail: String? {
+        guard let editing else { return nil }
+        let labels = editing.displays.compactMap { $0.width != nil ? $0.resolutionLabel : nil }
+        return labels.count == 1 ? labels[0] : nil
+    }
+
+    /// Stored brightness, same single-display-only inline treatment as resolution.
+    private var brightnessDetail: String? {
+        guard let editing else { return nil }
+        let vals = editing.displays.compactMap(\.brightness)
+        return vals.count == 1 ? "\(Int((vals[0] * 100).rounded()))%" : nil
+    }
+
+    /// The displays the stored preset turns off, by name.
+    private var connectionDetail: String? {
+        guard let editing else { return nil }
+        let names = editing.displays.filter { $0.connected == false }.compactMap { entry in
+            DisplayManagerAccessor.shared.displays.first { $0.displayUUID == entry.displayUUID }?.name
+                ?? PhysicalDisplayToggleService.shared.disconnected.first { $0.uuid == entry.displayUUID }?.name
+        }
+        guard !names.isEmpty else { return String(localized: "All displays on") }
+        return String(localized: "\(names.formatted(.list(type: .and))) off")
+    }
+
+    /// The swatch currently picked in the Color picker; the icon button previews it live.
+    private var selectedSwatch: Color {
+        DisplayPreset.colorOptions.first(where: { $0.name == selectedColor })?.color ?? .indigo
+    }
+
+    private let iconOptions: [(symbol: String, label: String)] = [
+        ("display", "Display"),
+        ("sparkles.rectangle.stack", "HiDPI"),
+        ("rectangle.on.rectangle", "Mirror"),
+        ("moon.fill", "Night"),
+        ("sun.max.fill", "Day"),
+        ("gamecontroller.fill", "Gaming"),
+        ("person.fill", "Personal"),
+        ("briefcase.fill", "Work")
+    ]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 9) {
+                PresetIconButton(symbol: selectedIcon, color: selectedSwatch, isOpen: showIdentityPicker) {
+                    withAnimation(.panelResize) { showIdentityPicker.toggle() }
+                }
+                // Explicit placeholder: macOS drops a plain field's own once focused.
+                ZStack(alignment: .leading) {
+                    if presetName.isEmpty {
+                        Text("Preset name")
+                            .font(.body)
+                            .foregroundColor(.secondary)
+                            .allowsHitTesting(false)
+                    }
+                    TextField("", text: $presetName)
+                        .textFieldStyle(.plain)
+                        .font(.body)
+                        .focused($nameFocused)
+                        .onSubmit(save)
+                }
+                .padding(.horizontal, 9)
+                .padding(.vertical, 7)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .fill(Color.primary.opacity(nameFocused ? 0.10 : 0.07))
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .strokeBorder(Color.accentColor.opacity(nameFocused ? 0.85 : 0), lineWidth: 2)
+                )
+                .animation(.easeOut(duration: 0.12), value: nameFocused)
+            }
+
+            if showIdentityPicker {
+                VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("Icon")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        // Plain HStack, not LazyVGrid: lazy containers reposition
+                        // items mid-flight during animated panel resizes.
+                        // Measured: see docs/ui-notes.md (SavePresetView: icon grid width)
+                        HStack(spacing: 3) {
+                            ForEach(iconOptions, id: \.symbol) { option in
+                                IconOptionButton(
+                                    symbol: option.symbol,
+                                    label: option.label,
+                                    isSelected: selectedIcon == option.symbol,
+                                    tint: selectedSwatch
+                                ) {
+                                    selectedIcon = option.symbol
+                                }
+                            }
+                        }
+                    }
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("Color")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        HStack(spacing: 7) {
+                            ForEach(DisplayPreset.colorOptions, id: \.name) { option in
+                                Button {
+                                    selectedColor = option.name
+                                } label: {
+                                    Circle()
+                                        .fill(option.color)
+                                        .frame(width: 16, height: 16)
+                                        .overlay(
+                                            Circle()
+                                                .strokeBorder(.white.opacity(selectedColor == option.name ? 0.9 : 0), lineWidth: 2)
+                                        )
+                                }
+                                .buttonStyle(.plain)
+                                .accessibilityLabel("\(DisplayPreset.localizedColorName(option.name)) color")
+                                .accessibilityAddTraits(selectedColor == option.name ? [.isSelected] : [])
+                            }
+                        }
+                    }
+                }
+                .padding(9)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .fill(Color.black.opacity(0.18))
+                )
+                // Fade in place, not a slide (same reasoning as the form fade above).
+                .transition(.opacity)
+            }
+
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Captures")
+                    .font(.caption2)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.secondary)
+                CaptureToggleRow(icon: "rectangle.on.rectangle", color: .blue,
+                                 label: "Resolution", detail: resolutionDetail, isOn: $includeResolution)
+                CaptureToggleRow(icon: "sun.max.fill", color: .orange,
+                                 label: "Brightness", detail: brightnessDetail, isOn: $includeBrightness)
+                CaptureToggleRow(icon: "display.2", color: .indigo,
+                                 label: "Arrangement", isOn: $includeArrangement)
+                // Small diagram of the saved layout: raw x/y coordinates aren't legible.
+                if includeArrangement, let editing, editing.includesArrangement {
+                    PresetArrangementThumbnail(preset: editing,
+                                               includeResolution: includeResolution,
+                                               includeBrightness: includeBrightness)
+                        .frame(height: 72)
+                        .padding(.top, 18) // headroom for the hover name callout
+                        .padding(.leading, 34)
+                        .padding(.trailing, 4)
+                }
+                CaptureToggleRow(icon: "power", color: .green,
+                                 label: "Connection", detail: connectionDetail, isOn: $includeConnection)
+                CaptureToggleRow(icon: "slider.horizontal.3", color: .teal,
+                                 label: "Image Adjustment", isOn: $includeImageAdjustment)
+                // Only where it can capture something: a display with the HDR row.
+                if editing?.includesHDR == true || PresetService.shared.anyHDRDisplay {
+                    CaptureToggleRow(icon: "tv.fill", color: .purple,
+                                     label: "HDR", isOn: $includeHDR)
+                }
+            }
+
+            ShortcutRecorderRow(label: "Shortcut", shortcut: $recordedShortcut)
+                .padding(.horizontal, -12)  // recorder row pads itself; cancel the form's inset
+
+            // Edit mode only; new presets always capture fresh values.
+            if editing != nil {
+                Toggle(isOn: $recaptureValues) {
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text("Update to current values")
+                            .font(.callout)
+                        Text("Replace the stored values above with this display's current settings")
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+                .toggleStyle(.switch)
+                .controlSize(.small)
+                .tint(.accentColor)
+            }
+
+            if let err = saveError {
+                Text(err)
+                    .font(.caption)
+                    .foregroundColor(.red)
+            }
+
+            HStack(spacing: 10) {
+                Spacer()
+                Button("Cancel") {
+                    // Same close-while-recording gap as Save (see save()).
+                    NotificationCenter.default.post(name: .crispStopShortcutRecording, object: nil)
+                    onClose()
+                }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+                if isSaving {
+                    ProgressView()
+                        .scaleEffect(0.6)
+                        .frame(width: 12, height: 12)
+                }
+                Button(isSaving ? "Saving…" : "Save", action: save)
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.small)
+                    .keyboardShortcut(.defaultAction)
+                    .disabled(isSaving || nothingSelected || presetName.trimmingCharacters(in: .whitespaces).isEmpty)
+            }
+        }
+        .padding(12)
+        .background(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(Color.primary.opacity(0.05))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .strokeBorder(Color.primary.opacity(0.10), lineWidth: 1)
+                )
+        )
+        .animation(.easeInOut(duration: 0.15), value: saveError)
+    }
+
+    private func save() {
+        let name = presetName.trimmingCharacters(in: .whitespaces)
+        guard !name.isEmpty, !nothingSelected else { return }
+
+        // Stop recording first: commitShortcut re-syncs hotkeys, a no-op while suspended.
+        NotificationCenter.default.post(name: .crispStopShortcutRecording, object: nil)
+
+        isSaving = true
+        saveError = nil
+
+        if let editing {
+            // Preserves stored values for captures left unchanged.
+            PresetService.shared.editPreset(
+                id: editing.id, name: name, icon: selectedIcon, colorName: selectedColor,
+                captures: Set([(PresetCapture.resolution, includeResolution),
+                               (.brightness, includeBrightness),
+                               (.arrangement, includeArrangement),
+                               (.imageAdjustment, includeImageAdjustment),
+                               (.hdr, includeHDR),
+                               (.connection, includeConnection)].filter(\.1).map(\.0))
+            )
+            // Opt-in: refresh the stored values to the current display state.
+            if recaptureValues {
+                PresetService.shared.updatePreset(id: editing.id)
+            }
+            PresetService.shared.commitShortcut(recordedShortcut, forPresetID: editing.id)
+        } else {
+            var preset = PresetService.shared.captureCurrentState(
+                name: name, icon: selectedIcon,
+                includeResolution: includeResolution,
+                includeBrightness: includeBrightness,
+                includeArrangement: includeArrangement,
+                includeImageAdjustment: includeImageAdjustment,
+                includeHDR: includeHDR,
+                includeConnection: includeConnection
+            )
+            preset.colorName = selectedColor
+            PresetService.shared.addPreset(preset)
+            PresetService.shared.commitShortcut(recordedShortcut, forPresetID: preset.id)
+        }
+
+        isSaving = false
+        onClose()
+    }
+}
+
+// MARK: - PresetIconButton
+
+/// The preset's icon shown in its color; tapping expands the icon + color
+/// picker. A small chevron badge marks it as a disclosure.
+struct PresetIconButton: View {
+    let symbol: String
+    let color: Color
+    let isOpen: Bool
+    let action: () -> Void
+
+    @State private var isHovered = false
+
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: symbol)
+                .font(.system(size: 15, weight: .semibold))
+                .foregroundColor(.white)
+                .frame(width: 34, height: 34)
+                .background(Circle().fill(color))
+                .overlay(
+                    Circle()
+                        .strokeBorder(Color.accentColor.opacity(isOpen ? 0.9 : (isHovered ? 0.3 : 0)), lineWidth: 2)
+                )
+                .overlay(alignment: .bottomTrailing) {
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 7, weight: .bold))
+                        .foregroundColor(.white)
+                        .frame(width: 13, height: 13)
+                        .background(Circle().fill(Color(white: 0.16)))
+                        .overlay(Circle().strokeBorder(.white.opacity(0.2), lineWidth: 0.5))
+                        .rotationEffect(.degrees(isOpen ? 180 : 0))
+                        .offset(x: 1, y: 1)
+                }
+        }
+        .buttonStyle(.plain)
+        .onHover { isHovered = $0 }
+        .help("Icon & color")
+        .accessibilityLabel("Choose icon and color")
+    }
+}
+
+// MARK: - CaptureToggleRow
+
+/// One "Captures" switch row: colored icon chip + label + native switch.
+/// Mirrors the Settings toggle rows for the same panel look.
+struct CaptureToggleRow: View {
+    let icon: String
+    let color: Color
+    let label: String
+    /// Stored value for this capture when editing (e.g. "1512x982 HiDPI", "72%").
+    /// Hidden when the capture is toggled off or when creating a new preset.
+    var detail: String? = nil
+    @Binding var isOn: Bool
+
+    var body: some View {
+        Toggle(isOn: $isOn) {
+            HStack(spacing: 8) {
+                MenuItemIcon(systemName: icon, color: color)
+                    .accessibilityHidden(true)
+                VStack(alignment: .leading, spacing: 1) {
+                    Text(LocalizedStringKey(label))
+                        .font(.body)
+                    if isOn, let detail, !detail.isEmpty {
+                        Text(detail)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .lineLimit(1)
+                            .truncationMode(.tail)
+                    }
+                }
+                Spacer()
+            }
+        }
+        .toggleStyle(.switch)
+        .controlSize(.small)
+    }
+}
+
+// MARK: - IconOptionButton
+
+struct IconOptionButton: View {
+    let symbol: String
+    let label: String
+    let isSelected: Bool
+    let tint: Color
+    let action: () -> Void
+
+    @State private var isHovered = false
+
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: symbol)
+                .font(.system(size: 13))
+                .foregroundColor(isSelected ? .white : (isHovered ? .primary : .secondary))
+                .frame(width: 26, height: 26)
+                .background(
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(isSelected ? tint : (isHovered ? Color.primary.opacity(0.08) : Color.clear))
+                )
+                // Without this, hover fires only over the glyph strokes, not the full box.
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .onHover { isHovered = $0 }
+        .accessibilityLabel(label)
+    }
+}
+
+// MARK: - PresetArrangementThumbnail
+
+/// Static schematic of a preset's saved arrangement: outlined rectangles at
+/// their saved positions, a legible stand-in for the raw x/y coordinates.
+struct PresetArrangementThumbnail: View {
+    let preset: DisplayPreset
+    var includeResolution: Bool = true
+    var includeBrightness: Bool = true
+    @EnvironmentObject private var displayManager: DisplayManager
+    @State private var hoveredID: Int?
+
+    var body: some View {
+        GeometryReader { geo in
+            let items = layout(in: geo.size)
+            ZStack(alignment: .topLeading) {
+                ForEach(items) { item in
+                    thumbnail(for: item.display)
+                        .frame(width: item.rect.width, height: item.rect.height)
+                        .contentShape(Rectangle())
+                        .onHover { hovering in
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.72)) {
+                                if hovering { hoveredID = item.id } else if hoveredID == item.id { hoveredID = nil }
+                            }
+                        }
+                        .overlay(alignment: .top) {
+                            // Same hover callout as the arranger; connected displays only.
+                            if hoveredID == item.id, let display = item.display {
+                                DisplayNameBadge(name: display.name, detail: detail(for: display))
+                                    .transition(.scale(scale: 0.85, anchor: .bottom).combined(with: .opacity))
+                            }
+                        }
+                        .offset(x: item.rect.minX, y: item.rect.minY)
+                        .zIndex(hoveredID == item.id ? 2 : 0)
+                }
+            }
+            .frame(width: geo.size.width, height: geo.size.height, alignment: .topLeading)
+        }
+        // Bounded canvas, echoing the real arranger's dark rounded stage.
+        .background(
+            RoundedRectangle(cornerRadius: 8, style: .continuous)
+                .fill(Color.black.opacity(0.18))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .strokeBorder(Color.primary.opacity(0.08), lineWidth: 1)
+                )
+        )
+    }
+
+    /// The arranger's wallpaper thumbnail when connected, else a neutral rounded panel.
+    @ViewBuilder
+    private func thumbnail(for display: DisplayInfo?) -> some View {
+        if let display {
+            DisplayThumbnailView(display: display, isDragged: false)
+        } else {
+            RoundedRectangle(cornerRadius: 4)
+                .fill(Color.primary.opacity(0.12))
+                .overlay(RoundedRectangle(cornerRadius: 4).stroke(Color.white.opacity(0.4), lineWidth: 1))
+        }
+    }
+
+    /// Saved resolution/brightness for the hover balloon, limited to captures on.
+    private func detail(for display: DisplayInfo) -> String? {
+        guard let e = preset.displays.first(where: { $0.displayUUID == display.displayUUID }) else { return nil }
+        var parts: [String] = []
+        if includeResolution, e.width != nil { parts.append(e.resolutionLabel) }
+        if includeBrightness, let b = e.brightness { parts.append("\(Int((b * 100).rounded()))%") }
+        return parts.isEmpty ? nil : parts.joined(separator: " · ")
+    }
+
+    private struct Placed: Identifiable {
+        let id: Int
+        let rect: CGRect
+        let display: DisplayInfo?
+    }
+
+    /// Saved origins + live point-size (or stored resolution if offline), scaled to fit `size`.
+    private func layout(in size: CGSize) -> [Placed] {
+        let raw: [(screen: CGRect, display: DisplayInfo?)] = preset.displays.compactMap { e in
+            guard let x = e.arrangementX, let y = e.arrangementY else { return nil }
+            let live = displayManager.displays.first { $0.displayUUID == e.displayUUID }
+            let sz = live.map { CGDisplayBounds($0.displayID).size } ?? pointSize(e)
+            return (CGRect(x: x, y: y, width: sz.width, height: sz.height), live)
+        }
+        guard !raw.isEmpty else { return [] }
+        let screens = raw.map(\.screen)
+        let minX = screens.map(\.minX).min()!, minY = screens.map(\.minY).min()!
+        let maxX = screens.map(\.maxX).max()!, maxY = screens.map(\.maxY).max()!
+        let totalW = max(maxX - minX, 1), totalH = max(maxY - minY, 1)
+        let padding: CGFloat = 8
+        let availW = max(size.width - padding * 2, 1), availH = max(size.height - padding * 2, 1)
+        let scale = min(availW / totalW, availH / totalH)
+        let offX = padding + (availW - totalW * scale) / 2
+        let offY = padding + (availH - totalH * scale) / 2
+        return raw.enumerated().map { i, item in
+            let r = item.screen
+            return Placed(
+                id: i,
+                rect: CGRect(x: offX + (r.minX - minX) * scale,
+                             y: offY + (r.minY - minY) * scale,
+                             width: r.width * scale, height: r.height * scale),
+                display: item.display
+            )
+        }
+    }
+
+    /// Point footprint from the stored resolution, or a default 16:10 box.
+    private func pointSize(_ e: DisplayPresetEntry) -> CGSize {
+        guard let w = e.width, let h = e.height else {
+            return CGSize(width: 1440, height: 900) // ponytail: default box, arrangement-only preset
+        }
+        return CGSize(width: CGFloat(w), height: CGFloat(h))
+    }
+}

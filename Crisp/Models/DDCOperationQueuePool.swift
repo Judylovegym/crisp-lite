@@ -1,0 +1,75 @@
+import Foundation
+import CoreGraphics
+
+/// Keeps DDC operations serial per physical display without coupling displays.
+final class DDCOperationQueuePool: @unchecked Sendable {
+    /// One outstanding `hold`; a reference type so release only signals the
+    /// queues its own hold parked. Unchecked: fields are immutable or move
+    /// only under the pool's lock.
+    private final class Hold: @unchecked Sendable {
+        let gate = DispatchSemaphore(value: 0)
+        let timeout: TimeInterval
+        var parked = 0
+
+        init(timeout: TimeInterval) { self.timeout = timeout }
+    }
+
+    private let lock = NSLock()
+    /// Kept for process lifetime: a reused displayID must land on the same
+    /// queue, or a new operation could overlap an in-flight one.
+    private var queues: [CGDirectDisplayID: DispatchQueue] = [:]
+    private var activeHolds: [Hold] = []
+
+    func queue(for displayID: CGDirectDisplayID) -> DispatchQueue {
+        lock.lock()
+        if let queue = queues[displayID] {
+            lock.unlock()
+            return queue
+        }
+        let queue = DispatchQueue(
+            label: "com.crisp.ddc.\(displayID)",
+            qos: .userInitiated
+        )
+        queues[displayID] = queue
+        // A display that gets its first operation during a hold is held too.
+        let holds = activeHolds
+        for hold in holds { hold.parked += 1 }
+        lock.unlock()
+        for hold in holds {
+            queue.async { _ = hold.gate.wait(timeout: .now() + hold.timeout) }
+        }
+        return queue
+    }
+
+    /// Parks every per-display queue, present and future, until the returned closure
+    /// runs; `onIdle` fires once queued work drains, so the caller knows I2C is free.
+    /// Each queue gives up after `timeout` so a lost release cannot wedge DDC.
+    func hold(timeout: TimeInterval, onIdle: @escaping () -> Void) -> @Sendable () -> Void {
+        let hold = Hold(timeout: timeout)
+        lock.lock()
+        activeHolds.append(hold)
+        let existing = Array(queues.values)
+        hold.parked = existing.count
+        lock.unlock()
+
+        let idle = DispatchGroup()
+        for queue in existing {
+            idle.enter()
+            queue.async {
+                idle.leave()
+                _ = hold.gate.wait(timeout: .now() + timeout)
+            }
+        }
+        idle.notify(queue: DispatchQueue.global(qos: .userInitiated), execute: onIdle)
+
+        return { [weak self] in
+            guard let self else { return }
+            self.lock.lock()
+            let parked = hold.parked
+            hold.parked = 0
+            self.activeHolds.removeAll { $0 === hold }
+            self.lock.unlock()
+            for _ in 0..<parked { hold.gate.signal() }
+        }
+    }
+}

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why is my external monitor blurry or tiny on a Mac? (free fix)</title>
+<meta name="description" content="An external monitor looks blurry, the text is too small, or the resolution you want isn't listed on macOS, because macOS hides HiDPI scaled resolutions on non-Retina displays. Crisp is a free, open-source menu bar app that adds sharp HiDPI scaling to any external monitor, a free BetterDisplay and Lunar alternative.">
+<link rel="canonical" href="https://crispmac.app/fix-blurry-external-monitor-macos.html">
+<link rel="alternate" hreflang="en" href="https://crispmac.app/fix-blurry-external-monitor-macos.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://crispmac.app/mac-hidpi.html">
+<link rel="alternate" hreflang="x-default" href="https://crispmac.app/fix-blurry-external-monitor-macos.html">
+<meta property="og:title" content="Why is my external monitor blurry or tiny on a Mac? (free fix)">
+<meta property="og:description" content="macOS only offers sharp scaled resolutions on its own Retina displays. Crisp is a free, open-source app that adds HiDPI scaling, DDC brightness, presets and more to any external monitor.">
+<meta property="og:image" content="https://crispmac.app/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://crispmac.app/fix-blurry-external-monitor-macos.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why is my external monitor blurry or tiny on a Mac? (free fix)">
+<meta name="twitter:description" content="macOS only offers sharp scaled resolutions on its own Retina displays. Crisp is a free, open-source app that adds HiDPI scaling, DDC brightness, presets and more to any external monitor.">
+<meta name="twitter:image" content="https://crispmac.app/og-card.png">
+<link rel="icon" href="icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Why is my external monitor blurry or tiny on a Mac?","image":["https://crispmac.app/screenshot.png"],"datePublished":"2026-07-29","dateModified":"2026-07-31","author":{"@type":"Person","name":"Didrik Galteland","url":"https://github.com/didriksg"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Crisp","item":"https://crispmac.app/"},{"@type":"ListItem","position":2,"name":"Why is my external monitor blurry or tiny on a Mac?"}]}
+</script>
+<link rel="stylesheet" href="styles.css?v=9">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="index.html"><img src="icon.png" alt="">Crisp</a>
+    <nav class="nav-links">
+      <a href="crisp-vs-betterdisplay.html">Compare</a>
+      <a href="https://github.com/didriksg/Crisp">GitHub</a>
+      <a href="mac-hidpi.html">中文</a>
+    </nav>
+  </div>
+</header>
+
+<main class="doc">
+  <header class="page-head">
+    <img class="icon" src="icon.png" alt="Crisp icon">
+    <p class="kicker">macOS display tips</p>
+    <h1>Why is my external monitor blurry or tiny on a Mac?</h1>
+    <p class="byline">By <a href="https://github.com/didriksg">Didrik Galteland</a>, maker of Crisp · Updated <time datetime="2026-07-31">July 31, 2026</time></p>
+  </header>
+
+  <article class="prose">
+    <p class="lead">You plug a 1080p or 1440p monitor into your Mac and everything is either microscopic at native resolution or fuzzy the moment you scale it up. It isn't the monitor, and it isn't a bad cable. It's how macOS handles external displays.</p>
+
+    <h2>What's actually happening</h2>
+    <p>A MacBook's built-in Retina screen has a very high pixel density (around 220 PPI). macOS renders it at 2x and scales down, so the interface is both sharp and comfortably sized. For most external monitors, macOS <strong>does not offer that same HiDPI (Retina-style) scaled mode</strong>, which leaves you with two bad options:</p>
+    <ul>
+      <li><strong>Native resolution:</strong> perfectly sharp, but the UI is drawn at physical pixel size, so on a 27" 1440p display everything looks tiny and cramped.</li>
+      <li><strong>A lower scaled resolution:</strong> the UI gets bigger, but you're now driving the panel off its native resolution, so the whole image goes soft.</li>
+    </ul>
+    <p>What you actually want is a <strong>"looks like 1920×1080, rendered at 2x"</strong> HiDPI mode: big and sharp, exactly like the built-in display. macOS hides that option for external monitors. Paid apps like BetterDisplay and Lunar can unlock it, but they put parts of it behind a Pro tier.</p>
+
+    <h2>"The text is too small," or "the resolution I want isn't listed"</h2>
+    <p>These are the same problem, worded two ways. If the <strong>text is too small</strong> on a 4K or 1440p external monitor, macOS is running the panel at its native resolution with no HiDPI scaling, so everything is drawn at physical pixel size. If the <strong>resolution you want isn't listed</strong> (or a scaled resolution "isn't showing" in Display settings), macOS is hiding the HiDPI modes for that display entirely. Both have the same fix: add back the missing HiDPI scaled resolutions, so you get a comfortable size that stays sharp.</p>
+
+    <h2>The fix: Crisp (free and open source)</h2>
+    <p>Crisp is a free, open-source (MIT) macOS menu bar app that adds the HiDPI scaled resolutions macOS leaves out. It's designed to feel like an expanded version of the built-in Display menu, so it lives in the menu bar and you never have to dig through System Settings.</p>
+    <img class="shot" src="screenshot.png" alt="Crisp menu bar panel" width="708" height="956" loading="lazy">
+
+    <h2>How to enable HiDPI on an external monitor</h2>
+    <p><strong>1. Install it.</strong> Homebrew is the cleanest path:</p>
+    <div class="brew" onclick="navigator.clipboard.writeText('brew install --cask crisp');this.querySelector('.hint').textContent='copied'">
+      <span class="prompt">$</span> brew install --cask crisp
+      <span class="hint">click to copy</span>
+    </div>
+    <p class="note">Prefer a direct download? Grab the DMG from GitHub Releases and drag Crisp to Applications.</p>
+    <p><strong>2. Turn on HiDPI.</strong> Click the menu bar icon, expand the external display, and enable HiDPI. Displays at 2K and above get their scaled resolutions configured automatically, with no admin password and no screen flash. (A password is only needed for the optional smooth-scaling mode below, or for the rare panel that ships no HiDPI modes at all.)</p>
+    <p><strong>3. Pick a scaled resolution.</strong> For example, on a 27" 1440p monitor the "looks like 1920×1080" option (rendered at 2x) is usually the sweet spot between sharpness and screen real estate; on a 4K panel, "looks like 2560×1440" is a common pick. Want finer control? Turn on <strong>smooth scaling</strong> (opt-in, per display) for a dense ladder of in-between sizes, the flexible scaling people install BetterDisplay for. It installs with one admin prompt and stays off by default, since the in-between steps look slightly soft.</p>
+
+    <h2>What else Crisp does</h2>
+    <ul>
+      <li><strong>Brightness on any monitor:</strong> hardware DDC control (with a software/gamma fallback), brightness keys that target the display under your cursor, all displays, or a subset you pick, and dimming below the hardware floor.</li>
+      <li><strong>Presets:</strong> save resolution, brightness, arrangement, image adjustment, HDR and which displays are on as a set with custom icons and colors, and apply in one click.</li>
+      <li><strong>Arrangement:</strong> drag-to-arrange canvas and one-click main display switching.</li>
+      <li><strong>Disconnect displays:</strong> turn a physical display off and back on from the menu or a switch on its row, and keep the built-in off while you're docked (Apple Silicon, remembered across sleep/wake).</li>
+      <li><strong>System toggles:</strong> Dark Mode, Night Shift, and True Tone from the menu bar.</li>
+      <li><strong>Color:</strong> ICC profile switching plus gamma, contrast, and gain adjustment.</li>
+      <li><strong>More:</strong> virtual HiDPI displays, notch hiding, auto brightness that follows your built-in screen, Keep Awake, and launch at login.</li>
+    </ul>
+
+    <h2>Crisp vs BetterDisplay and Lunar</h2>
+    <p>The feature overlap is large; the difference is the price. <strong>Crisp is completely free, with no Pro tier, no license key, and no daily limits.</strong> Things the others reserve for a paid tier, flexible HiDPI scaling (BetterDisplay Pro is $21.99), auto-brightness that follows your built-in screen (Lunar Pro), and turning a display off and back on (Lunar's BlackOut), are free in Crisp. Lunar's free tier also caps you at 100 adjustments a day; Crisp has no cap. It's open source (MIT), so you can read the code or build it yourself.</p>
+    <p class="note">To be fair about the gaps: Crisp does not do EDID overrides or picture-in-picture. If you need those specifically, BetterDisplay Pro is the better fit. For sharp HiDPI, brightness, presets, and arrangement without paying, Crisp covers it.</p>
+    <p><a href="crisp-vs-betterdisplay.html">See the full side-by-side: Crisp vs BetterDisplay, Lunar &amp; MonitorControl →</a></p>
+
+    <h2>FAQ</h2>
+    <details>
+      <summary>Does HiDPI work on any external monitor?</summary>
+      <p>Almost always. Displays at 2K (1440p) and above get their scaled resolutions configured automatically; lower-resolution panels can still work but offer fewer useful HiDPI steps.</p>
+    </details>
+    <details>
+      <summary>Will turning on HiDPI make things blurry?</summary>
+      <p>No, it is the opposite. Blur comes from running a non-native scaled resolution; HiDPI renders at 2x and scales down, so the image stays sharp while the interface gets a comfortable size.</p>
+    </details>
+    <details>
+      <summary>Which scaled resolution should I pick?</summary>
+      <p>On a 27-inch 1440p monitor, "looks like 1920×1080" (rendered at 2x) is usually the sharpest, most comfortable choice. On a 4K display you have more room to spare, so "looks like 2560×1440" is a popular balance. Crisp lets you try each and keep what looks best.</p>
+    </details>
+    <details>
+      <summary>Does it work on Apple Silicon and Intel Macs?</summary>
+      <p>Yes, on macOS 14 (Sonoma) or later. A few extras, like disconnecting a display from the menu, are Apple Silicon only.</p>
+    </details>
+    <details>
+      <summary>Why would it ask for my admin password?</summary>
+      <p>Regular HiDPI scaling no longer needs one. A password is only requested when you turn on optional smooth scaling, or for a panel that ships no HiDPI modes, where Crisp installs a display profile into <code>/Library/Displays</code>; macOS protects that folder, so it asks once. Everyday scaling and everything else are password-free.</p>
+    </details>
+    <details>
+      <summary>Do I need to disable SIP (System Integrity Protection)?</summary>
+      <p>No. Crisp works with macOS security left fully on. When it does write a display profile (smooth scaling, or a panel with no HiDPI modes), it uses a standard admin-password prompt and never touches the SIP-protected system folders, so there is no reboot into Recovery and no <code>csrutil disable</code>.</p>
+    </details>
+
+    <p class="note">Requires macOS 14 (Sonoma) or later; on macOS 26 the panel uses the native Liquid Glass backdrop. Localized in English, Simplified Chinese and Traditional Chinese.</p>
+  </article>
+
+  <div class="cta">
+    <h3>Try Crisp</h3>
+    <p>Free, open source, no Pro tier. Sharp HiDPI on any external monitor.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://github.com/didriksg/Crisp/releases/latest/download/Crisp.dmg">Download for macOS</a>
+      <a class="btn secondary" href="https://github.com/didriksg/Crisp">View on GitHub</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>Crisp is a free, open-source macOS display manager, an alternative to BetterDisplay and Lunar.</p>
+    <p><a href="index.html">← Home</a> · <a href="mac-hidpi.html">中文</a> · <a href="https://github.com/didriksg/Crisp">View on GitHub</a></p>
+    <p>Support Crisp: <a href="https://github.com/sponsors/didriksg">GitHub Sponsors</a> · <a href="https://ko-fi.com/didriksg">Ko-fi</a> · <a href="https://ifdian.net/a/didriksg">爱发电</a></p>
+  </footer>
+</main>
+<script>
+document.documentElement.classList.add('js');
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.prose details').forEach(function (d) {
+    var s = d.querySelector('summary'), a = null;
+    s.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (a) a.cancel();
+      var opening = !d.open;
+      d.classList.toggle('faq-open', opening);
+      if (reduce) { d.open = opening; return; }
+      if (opening) {
+        d.open = true;
+        a = d.animate([{ height: s.offsetHeight + 'px' }, { height: d.scrollHeight + 'px' }], { duration: 260, easing: 'ease' });
+        a.onfinish = function () { a = null; };
+      } else {
+        a = d.animate([{ height: d.offsetHeight + 'px' }, { height: s.offsetHeight + 'px' }], { duration: 240, easing: 'ease', fill: 'forwards' });
+        a.onfinish = function () { d.open = false; a.cancel(); a = null; };
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

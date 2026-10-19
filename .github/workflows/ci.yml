@@ -1,0 +1,114 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  # Everything a pull request is held to. The job name is the status check
+  # main's branch rule requires, so it stays "build".
+  build:
+    # macOS 26 SDK required: the panel backdrop uses NSGlassEffectView (macOS 26),
+    # which must exist at compile time even though it's #available-gated at runtime.
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Only the repo owner bumps the version (at release time). Fail a PR from
+      # anyone else that touches MARKETING_VERSION so it's enforced, not just asked.
+      - name: Guard MARKETING_VERSION
+        if: github.event_name == 'pull_request' && github.event.pull_request.author_association != 'OWNER'
+        run: |
+          if git diff "${{ github.event.pull_request.base.sha }}" HEAD -- project.yml | grep -qE '^[+-].*MARKETING_VERSION'; then
+            echo "::error::Don't change MARKETING_VERSION in project.yml — the maintainer bumps the version at release."
+            exit 1
+          fi
+      # Lint, enforcing: the baseline is clean, so any violation (warning or
+      # error) fails via --strict. Run locally with `swiftlint lint --strict`;
+      # without full Xcode, SWIFTLINT_DISABLE_SOURCEKIT=1 skips the
+      # SourceKit-backed rules, so CI stays the authoritative check.
+      #
+      # The macos-26 image ships no swiftlint, so install it explicitly (a
+      # missing binary used to be swallowed as a silent no-op).
+      - name: Install SwiftLint and xcodegen
+        run: HOMEBREW_NO_AUTO_UPDATE=1 brew install swiftlint xcodegen
+      - name: Lint (SwiftLint)
+        run: swiftlint lint --strict --reporter github-actions-logging
+      # Unit tests. Run locally with `make test` (needs full Xcode; the app
+      # itself builds with just the Command Line Tools). CI is the enforced
+      # gate: the suite was once never executed anywhere, which is how the
+      # "-- Hz" bug and the untested doc-comment contract in DisplayMode
+      # survived to a release.
+      - name: Test
+        run: make test
+      # The release binary is universal. Code that only compiles on arm64 (an
+      # `#if arch(arm64)` block a caller outside it depends on, how #110 first
+      # failed) breaks the x86_64 slice, and typechecking that slice takes
+      # seconds where the universal build in the job below takes minutes.
+      - name: Typecheck the x86_64 slice
+        run: make typecheck-x86
+      # Every localization key the code uses must exist in the String Catalog.
+      # SwiftUI coalesces interpolated text into "%@"-style lookup keys, and a
+      # key missing from the catalog silently falls back to English at runtime
+      # (issue class fixed in PR #34). Export what the compiler extracts and
+      # diff it against the catalog. Pre-existing gaps are tracked in the
+      # allowlist next to the script; remove entries as they get fixed. The export
+      # writes the keys it extracts into the catalog, so the committed file is put
+      # back before the check reads it.
+      - name: Check localization keys
+        run: |
+          mkdir -p build && cp Crisp/Resources/Localizable.xcstrings build/Localizable.xcstrings.orig
+          xcodebuild -quiet -exportLocalizations -project Crisp.xcodeproj \
+            -localizationPath build/loc CODE_SIGNING_ALLOWED=NO \
+            SWIFT_EMIT_LOC_STRINGS=YES
+          cp build/Localizable.xcstrings.orig Crisp/Resources/Localizable.xcstrings
+          python3 scripts/check-localization-keys.py build/loc/en.xcloc \
+            Crisp/Resources/Localizable.xcstrings scripts/i18n-missing-allowlist.txt
+      # Blocking on pushes to main, advisory on pull requests. A contributor
+      # adding an English string is never blocked (the release path,
+      # release.sh --publish, still enforces completeness before shipping). But
+      # a merge or direct push to main that drops or omits a zh-Hans string now
+      # turns main red at once, instead of surfacing later as an aborted
+      # release. This is how #34's merge silently lost two volume translations.
+      - name: Translation completeness (blocking on main, advisory on PRs)
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            python3 scripts/check-translations.py Crisp/Resources/Localizable.xcstrings
+          else
+            python3 scripts/check-translations.py Crisp/Resources/Localizable.xcstrings || true
+          fi
+
+  # Reuses the release script's dry run: compiles the universal binary,
+  # builds the icon, compiles the String Catalog, and packages the DMG,
+  # so a green run means the real release path builds. Publishes nothing.
+  #
+  # Four minutes of the six a run used to take, so it runs beside the job
+  # above rather than after it, and a pull request only pays for it when it
+  # touches the release path itself (the script, the project, the Makefile,
+  # this workflow). Every push to main still runs it in full.
+  release-build:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Decide whether the release path is affected
+        id: affected
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          elif git diff --name-only "${{ github.event.pull_request.base.sha }}" HEAD \
+               | grep -qE '^(project\.yml|Makefile|scripts/|\.github/workflows/)'; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Release path untouched; skipping the dry run."
+          fi
+      - name: Build (release dry run)
+        if: steps.affected.outputs.run == 'true'
+        run: ./scripts/release.sh v0.0.0-ci
