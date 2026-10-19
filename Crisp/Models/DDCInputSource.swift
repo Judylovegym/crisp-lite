@@ -8,19 +8,22 @@ enum DDCInputSource {
     static let vcp: UInt8 = 0x60
 
     /// Offered when the monitor lists no inputs of its own: DisplayPort 1 and 2,
-    /// HDMI 1 and 2, and USB-C (0x1B, outside MCCS but what most monitors use).
-    static let standard: [UInt16] = [0x0F, 0x10, 0x11, 0x12, 0x1B]
+    /// HDMI 1 and 2, and USB-C (0x19, the value portable panels most often use
+    /// for their USB-C port — measured on LO15A).
+    static let standard: [UInt16] = [0x0F, 0x10, 0x11, 0x12, 0x19]
 
     /// Every commonly offered connector, for pickers that offer the full set:
     /// VGA and DVI are still present on shared/KVM monitors, HDMI and
-    /// DisplayPort cover the multi-port variants, USB-C is outside MCCS but what
-    /// most monitors use.
+    /// DisplayPort cover the multi-port variants, and USB-C/TB follows
+    /// BetterDisplay's table (0x19-0x1B and 0x31). A portable panel's USB-C
+    /// input is often 0x19 rather than any DP value (measured on LO15A: 0x19
+    /// switches to the USB-C port, 0x10 does not).
     static let all: [UInt16] = [
         0x01, 0x02, 0x03, 0x04,          // VGA 1/2, DVI 1/2
         0x0F, 0x10, 0x16, 0x17,          // DisplayPort 1–4
         0x11, 0x12, 0x13,                // HDMI 1–3
         0x14, 0x15,                      // DVI-DL 1/2
-        0x1B                             // USB-C
+        0x19, 0x1A, 0x1B, 0x31           // USB-C / TB 1–4
     ]
 
     private static let names: [UInt16: String] = [
@@ -33,7 +36,7 @@ enum DDCInputSource {
         0x11: "HDMI 1", 0x12: "HDMI 2", 0x13: "HDMI 3",
         0x14: "DVI-DL 1", 0x15: "DVI-DL 2",
         0x16: "DisplayPort 3", 0x17: "DisplayPort 4",
-        0x1B: "USB-C"
+        0x19: "USB-C 1", 0x1A: "USB-C 2", 0x1B: "USB-C 3", 0x31: "USB-C 4"
     ]
 
     /// The connector name for a value, or nil for one without a common name. The

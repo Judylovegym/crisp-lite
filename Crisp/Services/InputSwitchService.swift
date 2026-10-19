@@ -183,7 +183,7 @@ final class InputSwitchService: ObservableObject {
     /// ride the DP AUX channel, which the monitor can tear down while it shows another
     /// source. HDMI inputs keep their I²C link and are excluded (they never bounce).
     private func linkRecoveryApplies(to value: UInt16) -> Bool {
-        [0x0F, 0x10, 0x16, 0x17, 0x1B].contains(value)  // DP 1-4, USB-C
+        [0x0F, 0x10, 0x16, 0x17, 0x19, 0x1A, 0x1B, 0x31].contains(value)  // DP 1-4, USB-C/TB 1-4
     }
 
     /// After a switch that kept the display connected (sole display), a DP/USB-C link
