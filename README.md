@@ -23,7 +23,7 @@ Sharp HiDPI scaling, DDC brightness, presets and virtual displays.
 
 ## This build (crisp-lite)
 
-A custom build of Crisp for a **keyboard shortcut to switch a monitor's signal input**: Settings → Keyboard Shortcuts gains two **Switch Input** slots, each pairing a global shortcut with a target input of your choice (HDMI 1/2, DisplayPort 1/2, USB-C). Press a slot's shortcut to switch the display under the pointer to that slot's input over DDC — a monitor shared between two computers, for instance: shortcut one takes it to the Mac's input, shortcut two to the other computer's. Switching away disconnects the display; its Reconnect row brings it back, exactly like choosing an input from the Input menu.
+A custom build of Crisp for a **keyboard shortcut to switch a monitor's signal input**: Settings → Keyboard Shortcuts gains two **Switch Input** slots, each pairing a global shortcut with a target input of your choice (VGA, DVI, DisplayPort 1–4, HDMI 1–3, DVI-DL, USB-C). Press a slot's shortcut to switch the display under the pointer to that slot's input over DDC — a monitor shared between two computers, for instance: shortcut one takes it to the Mac's input, shortcut two to the other computer's. Switching away disconnects the display; its Reconnect row brings it back, exactly like choosing an input from the Input menu.
 
 Changes on top of upstream [didriksg/Crisp](https://github.com/didriksg/Crisp):
 

@@ -71,7 +71,7 @@ struct ShortcutsSection: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
             Menu {
-                ForEach(DDCInputSource.standard, id: \.self) { input in
+                ForEach(DDCInputSource.all, id: \.self) { input in
                     Button(inputName(input)) { value.wrappedValue = input }
                 }
             } label: {
