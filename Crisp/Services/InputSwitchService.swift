@@ -127,7 +127,12 @@ final class InputSwitchService: ObservableObject {
             // away the link can drop (DP/USB-C DDC rides the AUX channel), the read
             // fails, and a stale cached value would silently skip the write while the
             // monitor shows another source. Keep going and try the write instead.
-            guard value != current else { return .success(false) }
+            // DP/USB-C targets never take the no-op even on a successful read: some
+            // panels report the last-selected input (not the one actually showing), so
+            // a read equal to the target can still leave the Mac with no signal.
+            if value != current, !linkRecoveryApplies(to: value) {
+                return .success(false)
+            }
         }
         guard let returnInput = macInput[uuid] else { return .failure(.macInputUnknown) }
         guard await DDCService.shared.writeInput(displayID: displayID, value: value) else {
@@ -181,34 +186,24 @@ final class InputSwitchService: ObservableObject {
         [0x0F, 0x10, 0x16, 0x17, 0x1B].contains(value)  // DP 1-4, USB-C
     }
 
-    /// After a switch that kept the display connected (sole display), the monitor can
-    /// cut the link: the DDC write lands and the display switches, but no signal comes
-    /// back, so the panel auto-jumps to another live input. Wait a beat and read again;
-    /// if the display is not on the target input (or the read fails), the link is gone —
+    /// After a switch that kept the display connected (sole display), a DP/USB-C link
+    /// this monitor dropped while showing another source only retrains on a hot plug
+    /// event, and the panel auto-jumps back to a live input — the Mac gets no signal
+    /// even though the DDC write landed. The current-input read is NOT trusted here:
+    /// this panel reports the last-selected input even after it has jumped away, so a
+    /// read can look "settled" while the screen shows another source. So: unconditionally
     /// blink the framebuffer (a software hot plug, the same mechanism BetterDisplay's
-    /// reconnect uses) and re-issue the input write once the link retrains, so the
-    /// portable panel re-negotiates its USB-C/DP link.
+    /// reconnect uses — safe for the sole display) and re-issue the input write once the
+    /// link retrains, so the portable panel re-negotiates its USB-C/DP link.
     private func recoverLinkAfterSwitch(_ display: DisplayInfo, target: UInt16) {
         let uuid = display.displayUUID
         guard recoveryInFlight.insert(uuid).inserted else { return }
         Task { [weak self] in
             defer { self?.recoveryInFlight.remove(uuid) }
-            // A monitor takes a beat to switch and (when it can) retrain the link.
-            try? await Task.sleep(nanoseconds: 3_000_000_000)
+            // The monitor takes a beat to switch inputs before we blink it.
+            try? await Task.sleep(nanoseconds: 2_500_000_000)
             let displayID = display.displayID
-            var current = await DDCService.shared.readInput(displayID: displayID)
-            // One more look a second later: a read that fails mid-retrain would
-            // otherwise blink a display that is actually settling fine.
-            if current == nil || (current != nil && current! != target) {
-                try? await Task.sleep(nanoseconds: 1_000_000_000)
-                let again = await DDCService.shared.readInput(displayID: displayID)
-                if again != nil { current = again }
-            }
-            if let current, current == target {
-                Self.log.notice("display \(displayID, privacy: .public) settled on input \(target, privacy: .public) after switch, link ok")
-                return
-            }
-            Self.log.notice("display \(displayID, privacy: .public) not on target input \(target, privacy: .public) after switch (read \(current.map { String(format: "0x%02X", $0) } ?? "failed", privacy: .public)), blinking framebuffer to restore the link")
+            Self.log.notice("display \(displayID, privacy: .public) link check after switch to input \(target, privacy: .public): blinking framebuffer to restore the link")
             guard await PhysicalDisplayToggleService.shared.softReconnect(display) else {
                 Self.log.error("display \(displayID, privacy: .public): soft reconnect failed, link may stay down (unplug/replug the cable)")
                 return
