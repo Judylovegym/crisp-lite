@@ -12,31 +12,47 @@ enum DDCInputSource {
     /// for their USB-C port — measured on LO15A).
     static let standard: [UInt16] = [0x0F, 0x10, 0x11, 0x12, 0x19]
 
-    /// Every commonly offered connector, for pickers that offer the full set:
-    /// VGA and DVI are still present on shared/KVM monitors, HDMI and
-    /// DisplayPort cover the multi-port variants, and USB-C/TB follows
-    /// BetterDisplay's table (0x19-0x1B and 0x31). A portable panel's USB-C
-    /// input is often 0x19 rather than any DP value (measured on LO15A: 0x19
-    /// switches to the USB-C port, 0x10 does not).
+    /// The primary connectors BetterDisplay offers (its ddcCustomInputSources,
+    /// priority 1 and 2): everything most monitors accept for input switching.
+    /// Used to supplement a monitor's own capabilities list when it omits an
+    /// input the panel physically has — portable panels in particular often
+    /// leave USB-C values out of their capabilities string (measured on LO15A:
+    /// its USB-C port answers to 0x19, which is absent from its capabilities).
+    static let betterDisplayPrimary: [UInt16] = [
+        0x0F, 0x10, 0x11, 0x12, 0x13,    // DisplayPort 1/2, HDMI 1-3
+        0x19, 0x1A, 0x1B, 0x31,          // USB-C / TB 1-4
+        0x03, 0x04, 0x01, 0x02           // DVI 1/2, VGA 1/2
+    ]
+
+    /// Every connector BetterDisplay defines (its ddcCustomInputSources table,
+    /// verbatim: value order, names and the LG-alt / Legacy / Other buckets),
+    /// for pickers that offer the full set.
     static let all: [UInt16] = [
-        0x01, 0x02, 0x03, 0x04,          // VGA 1/2, DVI 1/2
-        0x0F, 0x10, 0x16, 0x17,          // DisplayPort 1–4
-        0x11, 0x12, 0x13,                // HDMI 1–3
-        0x14, 0x15,                      // DVI-DL 1/2
-        0x19, 0x1A, 0x1B, 0x31           // USB-C / TB 1–4
+        0x0F, 0x10, 0x11, 0x12, 0x13,    // DisplayPort 1/2, HDMI 1-3
+        0x19, 0x1A, 0x1B, 0x31,          // USB-C / TB 1-4
+        0x03, 0x04, 0x01, 0x02,          // DVI 1/2, VGA 1/2
+        0xD0, 0xD1, 0xD2, 0x90, 0x91,    // DisplayPort 1 / DP 2+USB-C / USB-C / HDMI 1 / HDMI 2 (LG alt)
+        0x05, 0x06, 0x07, 0x08,          // Composite 1/2, S-Video 1/2 (Legacy)
+        0x09, 0x0A, 0x0B,                // Tuner 1-3 (Legacy)
+        0x0C, 0x0D, 0x0E,                // Component 1-3 (Legacy)
+        0x14, 0x15, 0x16, 0x17, 0x18,    // Other 1-5
+        0x1C, 0x1D, 0x1E, 0x1F, 0x20, 0x21, 0x22  // Other 6-12
     ]
 
     private static let names: [UInt16: String] = [
         0x01: "VGA 1", 0x02: "VGA 2", 0x03: "DVI 1", 0x04: "DVI 2",
-        0x05: "Composite 1", 0x06: "Composite 2",
-        0x07: "S-Video 1", 0x08: "S-Video 2",
-        0x09: "Tuner 1", 0x0A: "Tuner 2", 0x0B: "Tuner 3",
-        0x0C: "Component 1 (YPbPr)", 0x0D: "Component 2", 0x0E: "Component 3",
+        0x05: "Composite 1 (Legacy)", 0x06: "Composite 2 (Legacy)",
+        0x07: "S-Video 1 (Legacy)", 0x08: "S-Video 2 (Legacy)",
+        0x09: "Tuner 1 (Legacy)", 0x0A: "Tuner 2 (Legacy)", 0x0B: "Tuner 3 (Legacy)",
+        0x0C: "Component 1 (Legacy)", 0x0D: "Component 2 (Legacy)", 0x0E: "Component 3 (Legacy)",
         0x0F: "DisplayPort 1", 0x10: "DisplayPort 2",
         0x11: "HDMI 1", 0x12: "HDMI 2", 0x13: "HDMI 3",
-        0x14: "DVI-DL 1", 0x15: "DVI-DL 2",
-        0x16: "DisplayPort 3", 0x17: "DisplayPort 4",
-        0x19: "USB-C 1", 0x1A: "USB-C 2", 0x1B: "USB-C 3", 0x31: "USB-C 4"
+        0x19: "USB-C / TB 1", 0x1A: "USB-C / TB 2", 0x1B: "USB-C / TB 3", 0x31: "USB-C / TB 4",
+        0x90: "HDMI 1 (LG alt)", 0x91: "HDMI 2 (LG alt)",
+        0xD0: "DisplayPort 1 (LG alt)", 0xD1: "DP 2 / USB-C (LG alt)", 0xD2: "USB-C (LG alt)",
+        0x14: "Other 1", 0x15: "Other 2", 0x16: "Other 3", 0x17: "Other 4", 0x18: "Other 5",
+        0x1C: "Other 6", 0x1D: "Other 7", 0x1E: "Other 8", 0x1F: "Other 9",
+        0x20: "Other 10", 0x21: "Other 11", 0x22: "Other 12"
     ]
 
     /// The connector name for a value, or nil for one without a common name. The

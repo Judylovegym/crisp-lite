@@ -37,10 +37,20 @@ final class InputSwitchService: ObservableObject {
 
     // MARK: - Queries
 
-    /// The inputs to offer: what the monitor lists, else the standard list. A monitor
-    /// with codes of its own is reached by number through crispctl and Shortcuts.
+    /// The inputs to offer: what the monitor lists, supplemented with the
+    /// BetterDisplay primary table entries it omits — portable panels often
+    /// leave USB-C values out of their capabilities string (measured on LO15A:
+    /// its USB-C port answers to 0x19, which its capabilities never lists), so
+    /// without this supplement the USB-C input can't be chosen.
     func options(for display: DisplayInfo) -> [UInt16] {
-        listed[display.displayUUID].flatMap { $0.isEmpty ? nil : $0 } ?? DDCInputSource.standard
+        guard let caps = listed[display.displayUUID], !caps.isEmpty else {
+            return DDCInputSource.standard
+        }
+        var merged = caps
+        for value in DDCInputSource.betterDisplayPrimary where !merged.contains(value) {
+            merged.append(value)
+        }
+        return merged
     }
 
     /// Whether the display gets an Input row: an external whose DDC answers.
@@ -178,7 +188,7 @@ final class InputSwitchService: ObservableObject {
     /// ride the DP AUX channel, which the monitor can tear down while it shows another
     /// source. HDMI inputs keep their I²C link and are excluded (they never bounce).
     private func linkRecoveryApplies(to value: UInt16) -> Bool {
-        [0x0F, 0x10, 0x16, 0x17, 0x19, 0x1A, 0x1B, 0x31].contains(value)  // DP 1-4, USB-C/TB 1-4
+        [0x0F, 0x10, 0x19, 0x1A, 0x1B, 0x31].contains(value)  // DP 1/2, USB-C/TB 1-4
     }
 
     private static func onlineDisplayID(uuid: String) -> CGDirectDisplayID? {
