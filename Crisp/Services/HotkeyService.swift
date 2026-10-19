@@ -238,12 +238,11 @@ final class HotkeyService {
             NSSound.beep()
             return
         }
-        // The final list and current input, for a caller that answers once.
+        // The final list and current input, for a caller that answers once. The
+        // no-op check lives inside switchInput, against the live read: after a
+        // switch away the DDC link can be briefly unreachable, and judging by the
+        // stale cached input would silently skip the switch back.
         await service.settle(display)
-        if service.macInput[display.displayUUID] == value {
-            Self.log.info("input switch: display \(displayID) already on input \(value, privacy: .public), no-op")
-            return
-        }
         Self.log.info("input switch: display \(displayID) -> input \(value, privacy: .public)")
         if case .failure = await service.switchInput(display, to: value) {
             Self.log.info("input switch: write failed, beeping")

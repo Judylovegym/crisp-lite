@@ -123,9 +123,13 @@ final class InputSwitchService: ObservableObject {
         let displayID = display.displayID
         if let current = await DDCService.shared.readInput(displayID: displayID) {
             setMacInput(current, for: uuid, marked: false)
+            // Only a live read counts for the "already there" no-op: after a switch
+            // away the link can drop (DP/USB-C DDC rides the AUX channel), the read
+            // fails, and a stale cached value would silently skip the write while the
+            // monitor shows another source. Keep going and try the write instead.
+            guard value != current else { return .success(false) }
         }
         guard let returnInput = macInput[uuid] else { return .failure(.macInputUnknown) }
-        guard value != returnInput else { return .success(false) }
         guard await DDCService.shared.writeInput(displayID: displayID, value: value) else {
             return .failure(.writeFailed)
         }
