@@ -656,6 +656,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             }) {
                 InputBodyBlock(display: display, state: state)
             })
+            blocks.append(detail("ddc-head", isOpen: detailOpen, live: true) {
+                DDCHeadBlock(display: display, state: state)
+            })
+            blocks.append(detail("ddc-body", isOpen: {
+                detailOpen() && state.ddcOpenIDs.contains(id)
+            }) {
+                DDCBodyBlock(display: display, state: state)
+            })
             blocks.append(detail("dtail", isOpen: detailOpen) {
                 DetailTailBlock(display: display)
             })

@@ -1,4434 +1,4704 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "" : {
-
+  "sourceLanguage": "en",
+  "strings": {
+    "": {},
+    ", collapsed": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "，已折叠"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "，已摺疊"
+          }
+        }
+      }
+    },
+    ", expanded": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "，已展开"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "，已展開"
+          }
+        }
+      }
+    },
+    ", main display": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "，主显示器"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "，主要顯示器"
+          }
+        }
+      }
+    },
+    ", selected": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "，已选中"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "，已選取"
+          }
+        }
+      }
+    },
+    "%@": {
+      "shouldTranslate": false
+    },
+    "%@ (Crisp)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@（Crisp）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@（Crisp）"
+          }
+        }
+      }
+    },
+    "%@ (Default)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@（默认）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@（預設值）"
+          }
+        }
+      }
+    },
+    "%@ (low resolution)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@（低分辨率）"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@（低解析度）"
+          }
+        }
+      }
+    },
+    "%@ color": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@"
+          }
+        }
+      }
+    },
+    "%@ off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 已关闭"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 已關閉"
+          }
+        }
+      }
+    },
+    "%@, collapsed": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，已折叠"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，已摺疊"
+          }
+        }
+      }
     },
-    ", collapsed" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "，已折叠"
+    "%@, disconnected": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，已断开"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "，已摺疊"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，已中斷連線"
           }
         }
       }
     },
-    ", expanded" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "，已展开"
+    "%@, expanded": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，已展开"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "，已展開"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，已展開"
           }
         }
       }
     },
-    ", main display" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "，主显示器"
+    "%@, off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，已关闭"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "，主要顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，已關閉"
           }
         }
       }
     },
-    ", selected" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "，已选中"
+    "%@, on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，已开启"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "，已選取"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，已開啟"
           }
         }
       }
     },
-    "%@" : {
-      "shouldTranslate" : false
+    "%lld": {
+      "shouldTranslate": false
     },
-    "%@ (Crisp)" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@（Crisp）"
+    "%lld%%": {
+      "shouldTranslate": false
+    },
+    "Another input disconnects this display. Reconnect it here to switch back.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换到其他输入源会断开此显示器。在这里重新连接即可切换回来。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@（Crisp）"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切換到其他輸入來源會中斷此顯示器的連線。在這裡重新連接即可切換回來。"
           }
         }
       }
     },
-    "%@ (Default)" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@（默认）"
+    "Auto-Disconnect Built-in": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动断开内建显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@（預設值）"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自動中斷內建顯示器連線"
           }
         }
       }
     },
-    "%@ (low resolution)" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@（低分辨率）"
+    "Choose Again": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新选择"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@（低解析度）"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新選擇"
           }
         }
       }
     },
-    "%@ color" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@"
+    "Crisp could not read which input this Mac is on. Choose it once in the menu.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crisp 无法读取这台 Mac 使用的输入源。请在菜单中选择一次。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crisp 無法讀取這台 Mac 使用的輸入來源。請在選單中選擇一次。"
           }
         }
       }
     },
-    "%@ off" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ 已关闭"
+    "Crisp could not read which input this Mac is on. Choose it once.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crisp 无法读取这台 Mac 使用的输入源。请选择一次。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ 已關閉"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crisp 無法讀取這台 Mac 使用的輸入來源。請選擇一次。"
           }
         }
       }
     },
-    "%@, collapsed" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@，已折叠"
+    "Cross Unaligned Edges": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跨越未对齐的边缘"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@，已摺疊"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跨越未對齊的邊緣"
           }
         }
       }
     },
-    "%@, disconnected" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@，已断开"
+    "Input": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输入源"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@，已中斷連線"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "輸入來源"
           }
         }
       }
     },
-    "%@, expanded" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@，已展开"
+    "Input %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输入源 %@"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@，已展開"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "輸入來源 %@"
           }
         }
       }
     },
-    "%@, off" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@，已关闭"
+    "Reading the inputs from the monitor…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在从显示器读取输入源…"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@，已關閉"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在從顯示器讀取輸入來源…"
           }
         }
       }
     },
-    "%@, on" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@，已开启"
+    "Set Display Input": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置显示器输入源"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@，已開啟"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定顯示器輸入來源"
           }
         }
       }
     },
-    "%lld" : {
-      "shouldTranslate" : false
+    "Stays disconnected until you reconnect it here.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将保持断开，直到你在这里重新连接。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將保持中斷連線狀態，直到你在這裡重新連接。"
+          }
+        }
+      }
     },
-    "%lld%%" : {
-      "shouldTranslate" : false
+    "Switch ${display} to ${input}": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将 ${display} 切换到 ${input}"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將 ${display} 切換到 ${input}"
+          }
+        }
+      }
     },
-    "Another input disconnects this display. Reconnect it here to switch back." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "切换到其他输入源会断开此显示器。在这里重新连接即可切换回来。"
+    "Switches a monitor to another input, such as HDMI 1 or 0x11, the same as choosing it in the menu. Reconnect Display switches it back to this Mac.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将显示器切换到其他输入源（例如 HDMI 1 或 0x11），与在菜单中选择它相同。“重新连接显示器”会将它切换回这台 Mac。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "切換到其他輸入來源會中斷此顯示器的連線。在這裡重新連接即可切換回來。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將顯示器切換到其他輸入來源（例如 HDMI 1 或 0x11），與在選單中選擇它相同。「重新連接顯示器」會將它切換回這台 Mac。"
           }
         }
       }
     },
-    "Auto-Disconnect Built-in" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自动断开内建显示器"
+    "The monitor did not take the input change.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示器没有接受输入源更改。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自動中斷內建顯示器連線"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示器沒有接受輸入來源變更。"
           }
         }
       }
     },
-    "Choose Again" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新选择"
+    "The pointer jumps to the nearest display where edges don't line up": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在边缘未对齐处，指针会跳到最近的显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新選擇"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在邊緣未對齊處，指標會跳到最近的顯示器"
           }
         }
       }
     },
-    "Crisp could not read which input this Mac is on. Choose it once in the menu." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crisp 无法读取这台 Mac 使用的输入源。请在菜单中选择一次。"
+    "This is the only display, so it stays connected while it shows the other input.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这是唯一的显示器，因此在显示其他输入源时仍保持连接。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crisp 無法讀取這台 Mac 使用的輸入來源。請在選單中選擇一次。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "這是唯一的顯示器，因此在顯示其他輸入來源時仍保持連線。"
           }
         }
       }
     },
-    "Crisp could not read which input this Mac is on. Choose it once." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crisp 无法读取这台 Mac 使用的输入源。请选择一次。"
+    "Turns the built-in display off while an external display is connected": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "连接外接显示器时关闭内建显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crisp 無法讀取這台 Mac 使用的輸入來源。請選擇一次。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連接外接顯示器時關閉內建顯示器"
           }
         }
       }
     },
-    "Cross Unaligned Edges" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "跨越未对齐的边缘"
+    "×": {
+      "shouldTranslate": false
+    },
+    "∞": {
+      "shouldTranslate": false
+    },
+    "Activate": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启用"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "跨越未對齊的邊緣"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "啟用"
           }
         }
       }
     },
-    "Input" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "输入源"
+    "Active": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "活动"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "輸入來源"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用中"
           }
         }
       }
     },
-    "Input %@" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "输入源 %@"
+    "Adds finer in-between steps for how large everything looks": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增加更精细的中间缩放档位，用于微调界面大小"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "輸入來源 %@"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增加更精細的中間縮放檔位，用於微調介面大小"
           }
         }
       }
     },
-    "Reading the inputs from the monitor…" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正在从显示器读取输入源…"
+    "Adds finer in-between steps for how large everything looks. Enabling asks for an administrator password and briefly flashes the screen": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增加更精细的中间缩放档位，用于微调界面大小。启用需要管理员密码，并会短暂闪烁屏幕"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正在從顯示器讀取輸入來源…"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增加更精細的中間縮放檔位，用於微調介面大小。啟用需要管理員密碼，並會短暫閃爍螢幕"
           }
         }
       }
     },
-    "Set Display Input" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设置显示器输入源"
+    "Adjustments may affect HDR content!": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调整可能影响 HDR 内容！"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定顯示器輸入來源"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "調整可能影響 HDR 內容！"
           }
         }
       }
     },
-    "Stays disconnected until you reconnect it here." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将保持断开，直到你在这里重新连接。"
+    "All connected displays": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "所有已连接的显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將保持中斷連線狀態，直到你在這裡重新連接。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "所有已連線的顯示器"
           }
         }
       }
     },
-    "Switch ${display} to ${input}" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将 ${display} 切换到 ${input}"
+    "All displays on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "所有显示器已开启"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將 ${display} 切換到 ${input}"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "所有顯示器已開啟"
           }
         }
       }
     },
-    "Switches a monitor to another input, such as HDMI 1 or 0x11, the same as choosing it in the menu. Reconnect Display switches it back to this Mac." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将显示器切换到其他输入源（例如 HDMI 1 或 0x11），与在菜单中选择它相同。“重新连接显示器”会将它切换回这台 Mac。"
+    "All Profiles": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部配置文件"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將顯示器切換到其他輸入來源（例如 HDMI 1 或 0x11），與在選單中選擇它相同。「重新連接顯示器」會將它切換回這台 Mac。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部描述檔"
           }
         }
       }
     },
-    "The monitor did not take the input change." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示器没有接受输入源更改。"
+    "Applies a preset saved in Crisp, the same as clicking it in the menu.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用在 Crisp 中保存的预设，与在菜单中点按它的效果相同。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示器沒有接受輸入來源變更。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "套用在 Crisp 中儲存的預設組，與在選單中按一下它的效果相同。"
           }
         }
       }
     },
-    "The pointer jumps to the nearest display where edges don't line up" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在边缘未对齐处，指针会跳到最近的显示器"
+    "Apply ${preset}": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用 ${preset}"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在邊緣未對齊處，指標會跳到最近的顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "套用 ${preset}"
           }
         }
       }
     },
-    "This is the only display, so it stays connected while it shows the other input." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "这是唯一的显示器，因此在显示其他输入源时仍保持连接。"
+    "Apply Crisp Preset": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用 Crisp 预设"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "這是唯一的顯示器，因此在顯示其他輸入來源時仍保持連線。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "套用 Crisp 預設組"
           }
         }
       }
     },
-    "Turns the built-in display off while an external display is connected" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "连接外接显示器时关闭内建显示器"
+    "Are you sure you want to delete this virtual display configuration?": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "确定要删除此虚拟显示器配置吗？"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "連接外接顯示器時關閉內建顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "確定要刪除此虛擬顯示器配置嗎？"
           }
         }
       }
     },
-    "×" : {
-      "shouldTranslate" : false
+    "Arrange Displays": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排列显示器"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排列顯示器"
+          }
+        }
+      }
     },
-    "∞" : {
-      "shouldTranslate" : false
+    "Arrangement": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排列"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排列方式"
+          }
+        }
+      }
     },
-    "Activate" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "启用"
+    "Auto": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "啟用"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自動"
           }
         }
       }
     },
-    "Active" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "活动"
+    "Auto Brightness": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "使用中"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自動亮度"
           }
         }
       }
     },
-    "Adds finer in-between steps for how large everything looks" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "增加更精细的中间缩放档位，用于微调界面大小"
+    "Automatically adjust brightness": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动调节亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "增加更精細的中間縮放檔位，用於微調介面大小"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自動調整亮度"
           }
         }
       }
     },
-    "Adds finer in-between steps for how large everything looks. Enabling asks for an administrator password and briefly flashes the screen" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "增加更精细的中间缩放档位，用于微调界面大小。启用需要管理员密码，并会短暂闪烁屏幕"
+    "Beta": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "测试版"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "增加更精細的中間縮放檔位，用於微調介面大小。啟用需要管理員密碼，並會短暫閃爍螢幕"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "測試版"
           }
         }
       }
     },
-    "Adjustments may affect HDR content!" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "调整可能影响 HDR 内容！"
+    "blue": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "蓝色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "調整可能影響 HDR 內容！"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "藍色"
           }
         }
       }
     },
-    "All connected displays" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "所有已连接的显示器"
+    "Brightness": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "所有已連線的顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亮度"
           }
         }
       }
     },
-    "All displays on" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "所有显示器已开启"
+    "Brightness control mode: DDC hardware": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亮度控制模式：DDC 硬件"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "所有顯示器已開啟"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亮度控制模式：DDC 硬體"
           }
         }
       }
     },
-    "All Profiles" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "全部配置文件"
+    "Brightness control mode: Software emulation": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亮度控制模式：软件模拟"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "全部描述檔"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亮度控制模式：軟體模擬"
           }
         }
       }
     },
-    "Applies a preset saved in Crisp, the same as clicking it in the menu." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "应用在 Crisp 中保存的预设，与在菜单中点按它的效果相同。"
+    "Brightness control mode: System": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亮度控制模式：系统"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "套用在 Crisp 中儲存的預設組，與在選單中按一下它的效果相同。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亮度控制模式：系統"
           }
         }
       }
     },
-    "Apply ${preset}" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "应用 ${preset}"
+    "Brightness Down": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调低亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "套用 ${preset}"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "降低亮度"
           }
         }
       }
     },
-    "Apply Crisp Preset" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "应用 Crisp 预设"
+    "Brightness Keys": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亮度键"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "套用 Crisp 預設組"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亮度鍵"
           }
         }
       }
     },
-    "Are you sure you want to delete this virtual display configuration?" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "确定要删除此虚拟显示器配置吗？"
+    "Brightness keys need Accessibility access to redirect them to external displays. Grant it once and they start working, no restart.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亮度键需要辅助功能权限才能重定向到外接显示器。授权一次即可使用，无需重启。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "確定要刪除此虛擬顯示器配置嗎？"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亮度鍵需要輔助使用權限才能重新導向到外接顯示器。授權一次即可使用，無需重新開機。"
           }
         }
       }
     },
-    "Arrange Displays" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "排列显示器"
+    "Brightness Up": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "调高亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "排列顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "調高亮度"
           }
         }
       }
     },
-    "Arrangement" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "排列"
+    "Built-in Display": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "内建显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "排列方式"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "內建顯示器"
           }
         }
       }
     },
-    "Auto" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自动"
+    "Absolute brightness ratio": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "绝对亮度比率"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自動"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "絕對亮度比率"
           }
         }
       }
     },
-    "Auto Brightness" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自动亮度"
+    "Cancel": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自動亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消"
           }
         }
       }
     },
-    "Automatically adjust brightness" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自动调节亮度"
+    "Captures": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "包含项目"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自動調整亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "包含項目"
           }
         }
       }
     },
-    "Beta" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "测试版"
+    "Check for Updates at Launch": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启动时检查更新"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "測試版"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "啟動時檢查更新"
           }
         }
       }
     },
-    "blue" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "蓝色"
+    "Choose icon and color": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择图标与颜色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "藍色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選擇圖像與顏色"
           }
         }
       }
     },
-    "Brightness" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "亮度"
+    "Click anywhere on the screen to pick a color…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在屏幕上任意位置点击以选取颜色…"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在螢幕上任意位置按一下以選取顏色…"
           }
         }
       }
     },
-    "Brightness control mode: DDC hardware" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "亮度控制模式：DDC 硬件"
+    "Click to expand or collapse this section": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点击以展开或折叠此部分"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "亮度控制模式：DDC 硬體"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按一下以展開或摺疊此部分"
           }
         }
       }
     },
-    "Brightness control mode: Software emulation" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "亮度控制模式：软件模拟"
+    "Click to expand the control panel": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点击以展开控制面板"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "亮度控制模式：軟體模擬"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按一下以展開控制面板"
           }
         }
       }
     },
-    "Brightness control mode: System" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "亮度控制模式：系统"
+    "Click to open the release page": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点击打开发布页面"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "亮度控制模式：系統"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按一下以打開發布頁面"
           }
         }
       }
     },
-    "Brightness Down" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "调低亮度"
+    "Color": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "颜色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "降低亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顏色"
           }
         }
       }
     },
-    "Brightness Keys" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "亮度键"
+    "Color History": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "颜色历史"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "亮度鍵"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顏色歷史"
           }
         }
       }
     },
-    "Brightness keys need Accessibility access to redirect them to external displays. Grant it once and they start working, no restart." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "亮度键需要辅助功能权限才能重定向到外接显示器。授权一次即可使用，无需重启。"
+    "Color Profile": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "颜色配置文件"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "亮度鍵需要輔助使用權限才能重新導向到外接顯示器。授權一次即可使用，無需重新開機。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "色彩描述"
           }
         }
       }
     },
-    "Brightness Up" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "调高亮度"
+    "Color Temp": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "色温"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "調高亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "色溫"
           }
         }
       }
     },
-    "Built-in Display" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "内建显示器"
+    "Combined": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合并亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "內建顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合併亮度"
           }
         }
       }
     },
-    "Absolute brightness ratio" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "绝对亮度比率"
+    "Combined brightness": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合并亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "絕對亮度比率"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合併亮度"
           }
         }
       }
     },
-    "Cancel" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "取消"
+    "Confirm Deletion": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "确认删除"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "取消"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "確認刪除"
           }
         }
       }
     },
-    "Captures" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "包含项目"
+    "Connection": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "连接"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "包含項目"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "連線"
           }
         }
       }
     },
-    "Check for Updates at Launch" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "启动时检查更新"
+    "Contrast": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "对比度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "啟動時檢查更新"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "對比"
           }
         }
       }
     },
-    "Choose icon and color" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "选择图标与颜色"
+    "Copy Display Name": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制显示器名称"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "選擇圖像與顏色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "拷貝顯示器名稱"
           }
         }
       }
     },
-    "Click anywhere on the screen to pick a color…" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在屏幕上任意位置点击以选取颜色…"
+    "Create": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "创建"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在螢幕上任意位置按一下以選取顏色…"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "建立"
           }
         }
       }
     },
-    "Click to expand or collapse this section" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "点击以展开或折叠此部分"
+    "Create at launch": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启动时创建"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "按一下以展開或摺疊此部分"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "啟動時建立"
           }
         }
       }
     },
-    "Click to expand the control panel" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "点击以展开控制面板"
+    "Create automatically at launch": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启动时自动创建"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "按一下以展開控制面板"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "啟動時自動建立"
           }
         }
       }
     },
-    "Click to open the release page" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "点击打开发布页面"
+    "Create Preset": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "创建预设"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "按一下以打開發布頁面"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "建立預設組"
           }
         }
       }
     },
-    "Color" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "颜色"
+    "Create Virtual Display": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "创建虚拟显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顏色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "建立虛擬顯示器"
           }
         }
       }
     },
-    "Color History" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "颜色历史"
+    "Creating…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在创建…"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顏色歷史"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在建立…"
           }
         }
       }
     },
-    "Color Profile" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "颜色配置文件"
+    "Crisp Display": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crisp 显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "色彩描述"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crisp 顯示器"
           }
         }
       }
     },
-    "Color Temp" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "色温"
+    "Crisp is still starting. Try again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crisp 仍在启动中，请重试。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "色溫"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crisp 仍在啟動中，請再試一次。"
           }
         }
       }
     },
-    "Combined" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "合并亮度"
+    "Crisp Preset": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crisp 预设"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "合併亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crisp 預設組"
           }
         }
       }
     },
-    "Combined brightness" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "合并亮度"
+    "Crisp refused: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crisp 拒绝了请求：%@"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "合併亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crisp 拒絕了要求：%@"
           }
         }
       }
+    },
+    "Crisp v%@": {
+      "shouldTranslate": false
     },
-    "Confirm Deletion" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "确认删除"
+    "Crisp Virtual": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crisp 虚拟显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "確認刪除"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crisp 虛擬顯示器"
           }
         }
       }
     },
-    "Connection" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "连接"
+    "Current Main Display": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前主显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "連線"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目前主要顯示器"
           }
         }
       }
     },
-    "Contrast" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "对比度"
+    "Currently active": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前活动"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "對比"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目前使用中"
           }
         }
       }
     },
-    "Copy Display Name" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "复制显示器名称"
+    "Custom…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自定义…"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "拷貝顯示器名稱"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自訂…"
           }
         }
       }
     },
-    "Create" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "创建"
+    "Dark Mode": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "深色模式"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "建立"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "深色模式"
           }
         }
       }
     },
-    "Create at launch" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "启动时创建"
+    "Day": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日间"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "啟動時建立"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日間"
           }
         }
       }
     },
-    "Create automatically at launch" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "启动时自动创建"
+    "DDC": {
+      "shouldTranslate": false
+    },
+    "Deactivate": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停用"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "啟動時自動建立"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停用"
           }
         }
       }
     },
-    "Create Preset" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "创建预设"
+    "Delete": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "建立預設組"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刪除"
           }
         }
       }
     },
-    "Create Virtual Display" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "创建虚拟显示器"
+    "Disconnect ${display}": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "断开 ${display}"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "建立虛擬顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中斷 ${display} 的連線"
           }
         }
       }
     },
-    "Creating…" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正在创建…"
+    "Disconnect Display": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "断开显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正在建立…"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中斷顯示器連線"
           }
         }
       }
     },
-    "Crisp Display" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crisp 显示器"
+    "Disconnected": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已断开"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crisp 顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已中斷連線"
           }
         }
       }
     },
-    "Crisp is still starting. Try again." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crisp 仍在启动中，请重试。"
+    "Display": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crisp 仍在啟動中，請再試一次。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示器"
           }
         }
       }
     },
-    "Crisp Preset" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crisp 预设"
+    "Display %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示器 %@"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crisp 預設組"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示器 %@"
           }
         }
       }
     },
-    "Crisp refused: %@" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crisp 拒绝了请求：%@"
+    "Display brightness": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示器亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crisp 拒絕了要求：%@"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示器亮度"
           }
         }
       }
     },
-    "Crisp v%@" : {
-      "shouldTranslate" : false
+    "Display configuration failed (CGError %@).": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示器配置失败（CGError %@）。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示器配置失敗（CGError %@）。"
+          }
+        }
+      }
     },
-    "Crisp Virtual" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crisp 虚拟显示器"
+    "Display configuration timed out.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示器配置超时。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crisp 虛擬顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示器配置超時。"
           }
         }
       }
     },
-    "Current Main Display" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "当前主显示器"
+    "Display Mode": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示模式"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "目前主要顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示模式"
           }
         }
       }
     },
-    "Currently active" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "当前活动"
+    "Display Name": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示器名称"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "目前使用中"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示器名稱"
           }
         }
       }
     },
-    "Custom…" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自定义…"
+    "Display not found.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未找到显示器。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自訂…"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "找不到顯示器。"
           }
         }
       }
     },
-    "Dark Mode" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "深色模式"
+    "Display: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示器：%@"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "深色模式"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示器：%@"
           }
         }
       }
     },
-    "Day" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "日间"
+    "Edit…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "编辑…"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "日間"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "編輯…"
           }
         }
       }
     },
-    "DDC" : {
-      "shouldTranslate" : false
+    "Enable high-resolution scaling": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "启用高分辨率缩放"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "啟用高解析度縮放"
+          }
+        }
+      }
     },
-    "Deactivate" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "停用"
+    "External displays follow the built-in but keep the difference you set": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外接显示器跟随内建显示器，但保持你设置的亮度差异"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "停用"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外接顯示器跟隨內建顯示器，但保持你設定的亮度差異"
           }
         }
       }
     },
-    "Delete" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "删除"
+    "External displays follow the built-in display's brightness": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外接显示器跟随内建显示器的亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "刪除"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外接顯示器跟隨內建顯示器的亮度"
           }
         }
       }
     },
-    "Disconnect ${display}" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "断开 ${display}"
+    "Extra Brightness": {
+      "extractionState": "manual",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "额外亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "中斷 ${display} 的連線"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "額外亮度"
           }
         }
       }
     },
-    "Disconnect Display" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "断开显示器"
+    "Failed to activate virtual display. Please try again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "激活虚拟显示器失败，请重试。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "中斷顯示器連線"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "啟用虛擬顯示器失敗，請重試。"
           }
         }
       }
     },
-    "Disconnected" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已断开"
+    "Failed to apply. Please try again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用失败，请重试。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已中斷連線"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "套用失敗，請重試。"
           }
         }
       }
     },
-    "Display" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示器"
+    "Failed to arrange displays. Please try again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排列显示器失败，请重试。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排列顯示器失敗，請重試。"
           }
         }
       }
     },
-    "Display %@" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示器 %@"
+    "Failed to create virtual display. Please try again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "创建虚拟显示器失败，请重试。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示器 %@"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "建立虛擬顯示器失敗，請重試。"
           }
         }
       }
     },
-    "Display brightness" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示器亮度"
+    "Failed to set main display": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置主显示器失败"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示器亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定主要顯示器失敗"
           }
         }
       }
     },
-    "Display configuration failed (CGError %@)." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示器配置失败（CGError %@）。"
+    "Failed to update virtual display. Please try again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新虚拟显示器失败，请重试。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示器配置失敗（CGError %@）。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新虛擬顯示器失敗，請重試。"
           }
         }
       }
     },
-    "Display configuration timed out." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示器配置超时。"
+    "Follow the pointer": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跟随指针"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示器配置超時。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跟隨指標"
           }
         }
       }
     },
-    "Display Mode" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示模式"
+    "Force volume control for a monitor that doesn't report it. Crisp can set the volume but not read the current level.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "为不报告音量支持的显示器强制启用音量控制。Crisp 可以设置音量，但无法读取当前音量。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示模式"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "為不報告音量支援的顯示器強制啟用音量控制。Crisp 可以設定音量，但無法讀取目前音量。"
           }
         }
       }
     },
-    "Display Name" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示器名称"
+    "Gain": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增益"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示器名稱"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增益"
           }
         }
       }
     },
-    "Display not found." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "未找到显示器。"
+    "Gain B": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增益 B"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "找不到顯示器。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增益 B"
           }
         }
       }
     },
-    "Display: %@" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示器：%@"
+    "Gain G": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增益 G"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示器：%@"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增益 G"
           }
         }
       }
     },
-    "Edit…" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "编辑…"
+    "Gain R": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增益 R"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "編輯…"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "增益 R"
           }
         }
       }
     },
-    "Enable high-resolution scaling" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "启用高分辨率缩放"
+    "Gaming": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "游戏"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "啟用高解析度縮放"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "遊戲"
           }
         }
       }
     },
-    "External displays follow the built-in but keep the difference you set" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "外接显示器跟随内建显示器，但保持你设置的亮度差异"
+    "Gamma": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伽马"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "外接顯示器跟隨內建顯示器，但保持你設定的亮度差異"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伽瑪"
           }
         }
       }
     },
-    "External displays follow the built-in display's brightness" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "外接显示器跟随内建显示器的亮度"
+    "Gamma B": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伽马 B"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "外接顯示器跟隨內建顯示器的亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伽瑪 B"
           }
         }
       }
     },
-    "Extra Brightness" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "额外亮度"
+    "Gamma G": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伽马 G"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "額外亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伽瑪 G"
           }
         }
       }
     },
-    "Failed to activate virtual display. Please try again." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "激活虚拟显示器失败，请重试。"
+    "Gamma R": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伽马 R"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "啟用虛擬顯示器失敗，請重試。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伽瑪 R"
           }
         }
       }
     },
-    "Failed to apply. Please try again." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "应用失败，请重试。"
+    "Get Display Brightness": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "获取显示器亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "套用失敗，請重試。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取得顯示器亮度"
           }
         }
       }
     },
-    "Failed to arrange displays. Please try again." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "排列显示器失败，请重试。"
+    "Get the brightness of ${display}": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "获取 ${display} 的亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "排列顯示器失敗，請重試。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取得 ${display} 的亮度"
           }
         }
       }
     },
-    "Failed to create virtual display. Please try again." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "创建虚拟显示器失败，请重试。"
+    "gray": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "灰色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "建立虛擬顯示器失敗，請重試。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "灰色"
           }
         }
       }
     },
-    "Failed to set main display" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设置主显示器失败"
+    "green": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "绿色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定主要顯示器失敗"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "綠色"
           }
         }
       }
     },
-    "Failed to update virtual display. Please try again." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更新虚拟显示器失败，请重试。"
+    "HDR": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HDR"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更新虛擬顯示器失敗，請重試。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HDR"
           }
         }
       }
     },
-    "Follow the pointer" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "跟随指针"
+    "Height": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "高度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "跟隨指標"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "高度"
           }
         }
       }
     },
-    "Force volume control for a monitor that doesn't report it. Crisp can set the volume but not read the current level." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "为不报告音量支持的显示器强制启用音量控制。Crisp 可以设置音量，但无法读取当前音量。"
+    "Hide Notch Area": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐藏刘海区域"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "為不報告音量支援的顯示器強制啟用音量控制。Crisp 可以設定音量，但無法讀取目前音量。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隱藏瀏海區域"
           }
         }
       }
     },
-    "Gain" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "增益"
+    "HiDPI": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HiDPI"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "增益"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HiDPI"
           }
         }
       }
     },
-    "Gain B" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "增益 B"
+    "Highest": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最高"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "增益 B"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最高"
           }
         }
       }
     },
-    "Gain G" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "增益 G"
+    "Icon": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图标"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "增益 G"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "圖像"
           }
         }
       }
     },
-    "Gain R" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "增益 R"
+    "Icon & color": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图标与颜色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "增益 R"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "圖像與顏色"
           }
         }
       }
     },
-    "Gaming" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "游戏"
+    "Image Adjustment": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图像调整"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "遊戲"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "影像調整"
           }
         }
       }
     },
-    "Gamma" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "伽马"
+    "Image Adjustment Setting": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "图像调整项"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "伽瑪"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "影像調整項目"
           }
         }
       }
     },
-    "Gamma B" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "伽马 B"
+    "indigo": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "靛蓝色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "伽瑪 B"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "靛藍色"
           }
         }
       }
     },
-    "Gamma G" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "伽马 G"
+    "Invert Colors": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "反转颜色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "伽瑪 G"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "反相顏色"
           }
         }
       }
     },
-    "Gamma R" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "伽马 R"
+    "Keep Awake": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "防止睡眠"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "伽瑪 R"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "防止睡眠"
           }
         }
       }
     },
-    "Get Display Brightness" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "获取显示器亮度"
+    "Keep display offsets": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保持亮度偏移"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "取得顯示器亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保持亮度偏移"
           }
         }
       }
     },
-    "Get the brightness of ${display}" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "获取 ${display} 的亮度"
+    "Keyboard Shortcuts": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "键盘快捷键"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "取得 ${display} 的亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鍵盤快速鍵"
           }
         }
       }
     },
-    "gray" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "灰色"
+    "Larger Text": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更大文本"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "灰色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "放大文字"
           }
         }
       }
     },
-    "green" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "绿色"
+    "Launch at Login": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录时启动"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "綠色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登入時打開"
           }
         }
       }
     },
-    "HDR" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HDR"
+    "Command Line Tool": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "命令行工具"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HDR"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "命令列工具"
           }
         }
       }
     },
-    "Height" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "高度"
+    "Links crispctl into /usr/local/bin": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将 crispctl 链接到 /usr/local/bin"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "高度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將 crispctl 連結到 /usr/local/bin"
           }
         }
       }
     },
-    "Hide Notch Area" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "隐藏刘海区域"
+    "Loading profiles…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在加载配置文件…"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "隱藏瀏海區域"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在載入描述檔…"
           }
         }
       }
     },
-    "HiDPI" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HiDPI"
+    "Lowest": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最低"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HiDPI"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最低"
           }
         }
       }
     },
-    "Highest" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "最高"
+    "Main": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "主显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "最高"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "主要顯示器"
           }
         }
       }
     },
-    "Icon" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "图标"
+    "Mirror": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "镜像"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "圖像"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "鏡像輸出"
           }
         }
       }
     },
-    "Icon & color" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "图标与颜色"
+    "More Space": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更多空间"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "圖像與顏色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更多空間"
           }
         }
       }
     },
-    "Image Adjustment" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "图像调整"
+    "Most sizes are scaled and look slightly soft": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "多数尺寸经过缩放，会略显模糊"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "影像調整"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "多數尺寸經過縮放，會略顯模糊"
           }
         }
       }
     },
-    "Image Adjustment Setting" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "图像调整项"
+    "My Preset": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我的预设"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "影像調整項目"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我的預設組"
           }
         }
       }
     },
-    "indigo" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "靛蓝色"
+    "Name": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "名称"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "靛藍色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "名稱"
           }
         }
       }
     },
-    "Invert Colors" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "反转颜色"
+    "New Preset": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新建预设"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "反相顏色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新增預設組"
           }
         }
       }
     },
-    "Keep Awake" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "防止睡眠"
+    "Night": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "防止睡眠"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜間"
           }
         }
       }
     },
-    "Keep display offsets" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "保持亮度偏移"
+    "Night Shift": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜览"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "保持亮度偏移"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜覽"
           }
         }
       }
     },
-    "Keyboard Shortcuts" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "键盘快捷键"
+    "No built-in display detected": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未检测到内建显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "鍵盤快速鍵"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未偵測到內建顯示器"
           }
         }
       }
     },
-    "Larger Text" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更大文本"
+    "No display modes available": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无可用显示模式"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "放大文字"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無可用顯示模式"
           }
         }
       }
     },
-    "Launch at Login" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "登录时启动"
+    "No virtual displays yet": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂无虚拟显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "登入時打開"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚無虛擬顯示器"
           }
         }
       }
     },
-    "Command Line Tool" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "命令行工具"
+    "Non-HiDPI": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "非 HiDPI"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "命令列工具"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "非 HiDPI"
           }
         }
       }
     },
-    "Links crispctl into /usr/local/bin" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将 crispctl 链接到 /usr/local/bin"
+    "Not available on this Mac. Its chip can't draw scaled sizes larger than the display": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此 Mac 不支持此功能。其芯片无法绘制大于显示器分辨率的缩放尺寸"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將 crispctl 連結到 /usr/local/bin"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此 Mac 不支援此功能。其晶片無法繪製大於顯示器解析度的縮放尺寸"
           }
         }
       }
     },
-    "Loading profiles…" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正在加载配置文件…"
+    "Notch": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刘海"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正在載入描述檔…"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "瀏海"
           }
         }
       }
     },
-    "Lowest" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "最低"
+    "Off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "最低"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "關"
           }
         }
       }
     },
-    "Main" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "主显示器"
+    "OK": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "好"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "主要顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "好"
           }
         }
       }
     },
-    "Mirror" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "镜像"
+    "On": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "鏡像輸出"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開"
           }
         }
       }
     },
-    "More Space" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更多空间"
+    "Open in System Settings": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在系统设置中打开"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更多空間"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在系統設定中打開"
           }
         }
       }
     },
-    "Most sizes are scaled and look slightly soft" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "多数尺寸经过缩放，会略显模糊"
+    "Opens a page where you can buy me a coffee": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开可以请我喝咖啡的页面"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "多數尺寸經過縮放，會略顯模糊"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打開可以請我喝咖啡的頁面"
           }
         }
       }
     },
-    "My Preset" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "我的预设"
+    "Options": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选项"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "我的預設組"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選項"
           }
         }
       }
     },
-    "Name" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "名称"
+    "orange": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "橙色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "名稱"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "橙色"
           }
         }
       }
     },
-    "New Preset" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "新建预设"
+    "Pause Adjustments": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂停调整"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "新增預設組"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暫停調整"
           }
         }
       }
     },
-    "Night" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "夜间"
+    "Personal": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "个人"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "夜間"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "個人"
           }
         }
       }
     },
-    "Night Shift" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "夜览"
+    "Physical display disconnect requires Apple Silicon (macOS 13+).": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "断开物理显示器需要 Apple 芯片（macOS 13+）。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "夜覽"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中斷實體顯示器連線需要 Apple 晶片（macOS 13+）。"
           }
         }
       }
     },
-    "No built-in display detected" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "未检测到内建显示器"
+    "Pick Color from Screen": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从屏幕选取颜色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "未偵測到內建顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "從螢幕選取顏色"
           }
         }
       }
     },
-    "No display modes available" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "无可用显示模式"
+    "pink": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "粉色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "無可用顯示模式"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "粉紅色"
           }
         }
       }
     },
-    "No virtual displays yet" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "暂无虚拟显示器"
+    "Preset": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预设"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "尚無虛擬顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "預設組"
           }
         }
       }
     },
-    "Non-HiDPI" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "非 HiDPI"
+    "Preset name": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预设名称"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "非 HiDPI"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "預設組名稱"
           }
         }
       }
     },
-    "Not available on this Mac. Its chip can't draw scaled sizes larger than the display" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "此 Mac 不支持此功能。其芯片无法绘制大于显示器分辨率的缩放尺寸"
+    "Preset options": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预设选项"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "此 Mac 不支援此功能。其晶片無法繪製大於顯示器解析度的縮放尺寸"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "預設組選項"
           }
         }
       }
     },
-    "Notch" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "刘海"
+    "Presets": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预设"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "瀏海"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "預設組"
           }
         }
       }
     },
-    "Off" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "关"
+    "Profile": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "配置文件"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "關"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "描述檔"
           }
         }
       }
     },
-    "OK" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "好"
+    "purple": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "紫色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "好"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "紫色"
           }
         }
       }
     },
-    "On" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "开"
+    "Puts a display that Crisp disconnected back in the layout.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将 Crisp 断开的显示器放回排列中。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "開"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將 Crisp 中斷連線的顯示器放回排列中。"
           }
         }
       }
     },
-    "Open in System Settings" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在系统设置中打开"
+    "Quantization": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "量化"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在系統設定中打開"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "量化"
           }
         }
       }
     },
-    "Opens a page where you can buy me a coffee" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "打开可以请我喝咖啡的页面"
+    "Quit": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "退出"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "打開可以請我喝咖啡的頁面"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "結束"
           }
         }
       }
     },
-    "Options" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "选项"
+    "Quit Crisp": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "退出 Crisp"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "選項"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "結束 Crisp"
           }
         }
       }
     },
-    "orange" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "橙色"
+    "Recommended": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "推荐"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "橙色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "建議"
           }
         }
       }
     },
-    "Pause Adjustments" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "暂停调整"
+    "Reconnect": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新连接"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "暫停調整"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新連接"
           }
         }
       }
     },
-    "Personal" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "个人"
+    "Reconnect ${display}": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新连接 ${display}"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "個人"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新連接 ${display}"
           }
         }
       }
     },
-    "Physical display disconnect requires Apple Silicon (macOS 13+)." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "断开物理显示器需要 Apple 芯片（macOS 13+）。"
+    "Reconnect Display": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新连接显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "中斷實體顯示器連線需要 Apple 晶片（macOS 13+）。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新連接顯示器"
           }
         }
       }
     },
-    "Pick Color from Screen" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "从屏幕选取颜色"
+    "Reconnect this display": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新连接此显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "從螢幕選取顏色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新連接此顯示器"
           }
         }
       }
     },
-    "pink" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "粉色"
+    "Record Shortcut": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "录制快捷键"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "粉紅色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "錄製快速鍵"
           }
         }
       }
     },
-    "Preset" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "预设"
+    "red": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "红色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "預設組"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "紅色"
           }
         }
       }
     },
-    "Preset name" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "预设名称"
+    "Refresh Rate": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刷新率"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "預設組名稱"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新頻率"
           }
         }
       }
     },
-    "Preset options" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "预设选项"
+    "Refusing to disconnect: it would leave no active display.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法断开：这会导致没有可用的显示器。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "預設組選項"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無法中斷連線：這會導致沒有可用的顯示器。"
           }
         }
       }
     },
-    "Presets" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "预设"
+    "Remove Shortcut": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除快捷键"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "預設組"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除快速鍵"
           }
         }
       }
     },
-    "Profile" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "配置文件"
+    "Replace the stored values above with this display's current settings": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用该显示器的当前设置替换上方存储的值"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "描述檔"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用該顯示器的目前設定替換上方儲存的值"
           }
         }
       }
     },
-    "purple" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "紫色"
+    "Reset All": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部重置"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "紫色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部重置"
           }
         }
       }
     },
-    "Puts a display that Crisp disconnected back in the layout." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将 Crisp 断开的显示器放回排列中。"
+    "Reset Image Adjustment": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重置图像调整"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將 Crisp 中斷連線的顯示器放回排列中。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重置影像調整"
           }
         }
       }
     },
-    "Quantization" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "量化"
+    "Reset Image Adjustment of ${display}": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重置 ${display} 的图像调整"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "量化"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重置 ${display} 的影像調整"
           }
         }
       }
     },
-    "Quit" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "退出"
+    "Resolution": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "分辨率"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "結束"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解析度"
           }
         }
       }
     },
-    "Quit Crisp" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "退出 Crisp"
+    "Resume Adjustments": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复调整"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "結束 Crisp"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢復調整"
           }
         }
       }
     },
-    "Recommended" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "推荐"
+    "Returns a display's brightness in percent.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以百分比返回显示器的亮度。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "建議"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以百分比傳回顯示器的亮度。"
           }
         }
       }
     },
-    "Reconnect" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新连接"
+    "Save": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新連接"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "儲存"
           }
         }
       }
     },
-    "Reconnect ${display}" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新连接 ${display}"
+    "Saved. Unplug and replug the monitor cable, or restart your Mac, to apply.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已保存。请拔掉并重新插入显示器连接线，或重启 Mac，以使更改生效。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新連接 ${display}"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已儲存。請拔除並重新插入顯示器連接線，或重新開機 Mac 來套用變更。"
           }
         }
       }
     },
-    "Reconnect Display" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新连接显示器"
+    "Saving…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在保存…"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新連接顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在儲存…"
           }
         }
       }
     },
-    "Reconnect this display" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新连接此显示器"
+    "Selected displays only": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅所选显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新連接此顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "僅所選顯示器"
           }
         }
       }
     },
-    "Record Shortcut" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "录制快捷键"
+    "Set %@ as Main Display": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将 %@ 设为主显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "錄製快速鍵"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將 %@ 設為主要顯示器"
           }
         }
       }
     },
-    "red" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "红色"
+    "Set ${display} to ${brightness} %": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将 ${display} 设为 ${brightness}%"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "紅色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將 ${display} 設為 ${brightness}%"
           }
         }
       }
     },
-    "Refresh Rate" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "刷新率"
+    "Set ${setting} of ${display} to ${value}": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将 ${display} 的 ${setting} 设为 ${value}"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更新頻率"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將 ${display} 的 ${setting} 設為 ${value}"
           }
         }
       }
     },
-    "Refusing to disconnect: it would leave no active display." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "无法断开：这会导致没有可用的显示器。"
+    "Set as Main Display": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设为主显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "無法中斷連線：這會導致沒有可用的顯示器。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設為主要顯示器"
           }
         }
       }
     },
-    "Remove Shortcut" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "移除快捷键"
+    "Set Display Brightness": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置显示器亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "移除快速鍵"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定顯示器亮度"
           }
         }
       }
     },
-    "Replace the stored values above with this display's current settings" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "用该显示器的当前设置替换上方存储的值"
+    "Set Display HDR": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置显示器 HDR"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "用該顯示器的目前設定替換上方儲存的值"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定顯示器 HDR"
           }
         }
       }
     },
-    "Reset All" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "全部重置"
+    "Set Extra Brightness": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置额外亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "全部重置"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定額外亮度"
           }
         }
       }
     },
-    "Reset Image Adjustment" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重置图像调整"
+    "Set Extra Brightness of ${display} to ${enabled}": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将 ${display} 的额外亮度设为 ${enabled}"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重置影像調整"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將 ${display} 的額外亮度設為 ${enabled}"
           }
         }
       }
     },
-    "Reset Image Adjustment of ${display}" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重置 ${display} 的图像调整"
+    "Set HDR of ${display} to ${enabled}": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将 ${display} 的 HDR 设为 ${enabled}"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重置 ${display} 的影像調整"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將 ${display} 的 HDR 設為 ${enabled}"
           }
         }
       }
     },
-    "Resolution" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "分辨率"
+    "Set Image Adjustment": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置图像调整"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "解析度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定影像調整"
           }
         }
       }
     },
-    "Resume Adjustments" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "恢复调整"
+    "Sets a display's brightness in percent. Above 100 needs Extra Brightness on.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以百分比设置显示器的亮度。高于 100 需要开启额外亮度。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "恢復調整"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以百分比設定顯示器的亮度。超過 100 需要開啟額外亮度。"
           }
         }
       }
     },
-    "Returns a display's brightness in percent." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "以百分比返回显示器的亮度。"
+    "Sets every Image Adjustment slider back to neutral, the same as Reset All in the menu.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将所有图像调整滑块恢复为中性值，与菜单中的“全部重置”相同。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "以百分比傳回顯示器的亮度。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將所有影像調整滑桿恢復為中性值，與選單中的「全部重置」相同。"
           }
         }
       }
     },
-    "Save" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "保存"
+    "Sets one Image Adjustment slider, the same as moving it in the menu. Most run from -100 to 100 with 0 as neutral; Quantization runs from 2 to 256.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置一个图像调整滑块，与在菜单中拖动它相同。大多数的范围为 -100 到 100，0 为中性值；量化的范围为 2 到 256。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "儲存"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定一個影像調整滑桿，與在選單中拖移它相同。大多數的範圍為 -100 到 100，0 為中性值；量化的範圍為 2 到 256。"
           }
         }
       }
     },
-    "Saved. Unplug and replug the monitor cable, or restart your Mac, to apply." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已保存。请拔掉并重新插入显示器连接线，或重启 Mac，以使更改生效。"
+    "Setting": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置项"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "已儲存。請拔除並重新插入顯示器連接線，或重新開機 Mac 來套用變更。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定項目"
           }
         }
       }
     },
-    "Saving…" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正在保存…"
+    "Settings": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正在儲存…"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定"
           }
         }
       }
     },
-    "Selected displays only" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "仅所选显示器"
+    "Shortcut": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快捷键"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "僅所選顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "快速鍵"
           }
         }
       }
     },
-    "Set %@ as Main Display" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将 %@ 设为主显示器"
+    "Show all resolutions": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示所有分辨率"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將 %@ 設為主要顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示所有解析度"
           }
         }
       }
     },
-    "Set ${display} to ${brightness} %" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将 ${display} 设为 ${brightness}%"
+    "Show Combined Brightness": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示合并亮度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將 ${display} 設為 ${brightness}%"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示合併亮度"
           }
         }
       }
     },
-    "Set ${setting} of ${display} to ${value}" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将 ${display} 的 ${setting} 设为 ${value}"
+    "Show Connection Switches": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示连接开关"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將 ${display} 的 ${setting} 設為 ${value}"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示連線開關"
           }
         }
       }
     },
-    "Set as Main Display" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设为主显示器"
+    "Show Volume Sliders": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示音量滑块"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設為主要顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示音量滑桿"
           }
         }
       }
     },
-    "Set Display Brightness" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设置显示器亮度"
+    "Smooth scaling": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "平滑缩放"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定顯示器亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "平滑縮放"
           }
         }
       }
     },
-    "Set Display HDR" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设置显示器 HDR"
+    "Software": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "软件"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定顯示器 HDR"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "軟體"
           }
         }
       }
     },
-    "Set Extra Brightness" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设置额外亮度"
+    "Speaker volume": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "扬声器音量"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定額外亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "揚聲器音量"
           }
         }
       }
     },
-    "Set Extra Brightness of ${display} to ${enabled}" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将 ${display} 的额外亮度设为 ${enabled}"
+    "Steps brightness like the brightness keys, on the same displays. For keyboards without them.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以与亮度键相同的步进调节亮度，作用于相同的显示器。适用于没有亮度键的键盘。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將 ${display} 的額外亮度設為 ${enabled}"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以與亮度鍵相同的步進調整亮度，作用於相同的顯示器。適用於沒有亮度鍵的鍵盤。"
           }
         }
       }
     },
-    "Set HDR of ${display} to ${enabled}" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将 ${display} 的 HDR 设为 ${enabled}"
+    "Support Crisp": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持 Crisp"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將 ${display} 的 HDR 設為 ${enabled}"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "贊助 Crisp"
           }
         }
       }
     },
-    "Set Image Adjustment" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设置图像调整"
+    "Switch failed, please try again": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换失败，请重试"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定影像調整"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切換失敗，請重試"
           }
         }
       }
     },
-    "Sets a display's brightness in percent. Above 100 needs Extra Brightness on." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "以百分比设置显示器的亮度。高于 100 需要开启额外亮度。"
+    "Switch Input 1": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换输入源 1"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "以百分比設定顯示器的亮度。超過 100 需要開啟額外亮度。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切換輸入源 1"
           }
         }
       }
     },
-    "Sets every Image Adjustment slider back to neutral, the same as Reset All in the menu." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将所有图像调整滑块恢复为中性值，与菜单中的“全部重置”相同。"
+    "Switch Input 2": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换输入源 2"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將所有影像調整滑桿恢復為中性值，與選單中的「全部重置」相同。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切換輸入源 2"
           }
         }
       }
     },
-    "Sets one Image Adjustment slider, the same as moving it in the menu. Most run from -100 to 100 with 0 as neutral; Quantization runs from 2 to 256." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设置一个图像调整滑块，与在菜单中拖动它相同。大多数的范围为 -100 到 100，0 为中性值；量化的范围为 2 到 256。"
+    "Switches the display under the pointer to the chosen input over DDC (HDMI, DisplayPort…). Another input disconnects the display; its Reconnect row brings it back.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将指针所在显示器切换到所选输入（HDMI、DisplayPort…）。切换到其他输入会断开显示器；其「重新连接」行可将其切回。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定一個影像調整滑桿，與在選單中拖移它相同。大多數的範圍為 -100 到 100，0 為中性值；量化的範圍為 2 到 256。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將指標所在顯示器切換到所選輸入（HDMI、DisplayPort…）。切換到其他輸入會中斷顯示器；其「重新連線」列可將其切回。"
           }
         }
       }
     },
-    "Setting" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设置项"
+    "Target Input": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目标输入"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定項目"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目標輸入"
           }
         }
       }
     },
-    "Settings" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设置"
+    "Switches the display under the pointer between HiDPI and low resolution.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将指针所在显示器在 HiDPI 与低分辨率之间切换。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將指標所在顯示器在 HiDPI 與低解析度之間切換。"
           }
         }
       }
     },
-    "Shortcut" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "快捷键"
+    "Syncing with built-in display brightness": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在与内建显示器亮度同步"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "快速鍵"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在與內建顯示器亮度同步"
           }
         }
       }
     },
-    "Show all resolutions" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示所有分辨率"
+    "System": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示所有解析度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系統"
           }
         }
       }
     },
-    "Show Combined Brightness" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示合并亮度"
+    "System Color": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统颜色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示合併亮度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系統顏色"
           }
         }
       }
     },
-    "Show Connection Switches" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示连接开关"
+    "Takes a display out of the layout, the same as Disconnect Display in the menu.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将显示器移出排列，与菜单中的“断开显示器”相同。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示連線開關"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將顯示器移出排列，與選單中的「中斷顯示器連線」相同。"
           }
         }
       }
     },
-    "Show Volume Sliders" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示音量滑块"
+    "teal": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "蓝绿色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "顯示音量滑桿"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "藍綠色"
           }
         }
       }
     },
-    "Smooth scaling" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "平滑缩放"
+    "This virtual display is currently active. Deleting it will disable it immediately.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此虚拟显示器当前处于活动状态。删除它会立即禁用。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "平滑縮放"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此虛擬顯示器目前正在使用中。刪除它會立即停用。"
           }
         }
       }
     },
-    "Software" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "软件"
+    "Toggle HiDPI": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换 HiDPI"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "軟體"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切換 HiDPI"
           }
         }
       }
     },
-    "Speaker volume" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "扬声器音量"
+    "Tools": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工具"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "揚聲器音量"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工具"
           }
         }
       }
     },
-    "Steps brightness like the brightness keys, on the same displays. For keyboards without them." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "以与亮度键相同的步进调节亮度，作用于相同的显示器。适用于没有亮度键的键盘。"
+    "True Tone": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原彩显示"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "以與亮度鍵相同的步進調整亮度，作用於相同的顯示器。適用於沒有亮度鍵的鍵盤。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原彩"
           }
         }
       }
     },
-    "Support Crisp" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "支持 Crisp"
+    "Turns Extra Brightness on or off for a display that supports it.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "为支持的显示器开启或关闭额外亮度。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "贊助 Crisp"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "為支援的顯示器開啟或關閉額外亮度。"
           }
         }
       }
     },
-    "Switch failed, please try again" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "切换失败，请重试"
+    "Turns HDR on or off for an external display that supports it.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "为支持的外接显示器开启或关闭 HDR。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "切換失敗，請重試"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "為支援的外接顯示器開啟或關閉 HDR。"
           }
         }
       }
     },
-    "Switch Input 1" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "切换输入源 1"
+    "Type shortcut… (Esc to cancel)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请按下快捷键…（按 Esc 取消）"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "切換輸入源 1"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "請按下快速鍵…（按 Esc 取消）"
           }
         }
       }
     },
-    "Switch Input 2" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "切换输入源 2"
+    "Unable to switch to %@, please try again": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法切换到 %@，请重试"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "切換輸入源 2"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無法切換到 %@，請重試"
           }
         }
       }
     },
-    "Switches the display under the pointer to the chosen input over DDC (HDMI, DisplayPort…). Another input disconnects the display; its Reconnect row brings it back." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将指针所在显示器切换到所选输入（HDMI、DisplayPort…）。切换到其他输入会断开显示器；其「重新连接」行可将其切回。"
+    "Update Available": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有可用更新"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將指標所在顯示器切換到所選輸入（HDMI、DisplayPort…）。切換到其他輸入會中斷顯示器；其「重新連線」列可將其切回。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有可用更新"
           }
         }
       }
     },
-    "Target Input" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "目标输入"
+    "Update available, version %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有可用更新，版本 %@"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "目標輸入"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有可用更新，版本 %@"
           }
         }
       }
     },
-    "Switches the display under the pointer between HiDPI and low resolution." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将指针所在显示器在 HiDPI 与低分辨率之间切换。"
+    "Update to Current Settings": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新为当前设置"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將指標所在顯示器在 HiDPI 與低解析度之間切換。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新為目前設定"
           }
         }
       }
     },
-    "Syncing with built-in display brightness" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正在与内建显示器亮度同步"
+    "Update to current values": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新为当前值"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正在與內建顯示器亮度同步"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新為目前值"
           }
         }
       }
     },
-    "System" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "系统"
+    "From each panel's rated nits. HDR monitors report their HDR peak, so lower this if the built-in runs too bright": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "根据各屏幕的标称 nit 值计算。HDR 显示器报告的是其 HDR 峰值，若内建屏幕过亮请调低此值"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "系統"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "根據各螢幕的標稱 nit 值計算。HDR 顯示器報告的是其 HDR 峰值，若內建螢幕過亮請調低此值"
           }
         }
       }
     },
-    "System Color" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "系统颜色"
+    "Use brightness keys on external displays": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用亮度键控制外接显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "系統顏色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用亮度鍵控制外接顯示器"
           }
         }
       }
     },
-    "Takes a display out of the layout, the same as Disconnect Display in the menu." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "将显示器移出排列，与菜单中的“断开显示器”相同。"
+    "v%@": {
+      "shouldTranslate": false
+    },
+    "Value": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "值"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "將顯示器移出排列，與選單中的「中斷顯示器連線」相同。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "數值"
           }
         }
       }
     },
-    "teal" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "蓝绿色"
+    "Variable (%@-%@)": {
+      "comment": "External VRR refresh-rate row, full range",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可变（%@-%@）"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "藍綠色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可變（%@-%@）"
           }
         }
       }
     },
-    "This virtual display is currently active. Deleting it will disable it immediately." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "此虚拟显示器当前处于活动状态。删除它会立即禁用。"
+    "Variable (up to %@)": {
+      "comment": "External VRR refresh-rate row",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可变（最高 %@）"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "此虛擬顯示器目前正在使用中。刪除它會立即停用。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可變（最高 %@）"
           }
         }
       }
     },
-    "Toggle HiDPI" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "切换 HiDPI"
+    "Virtual Display": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "虚拟显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "切換 HiDPI"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "虛擬顯示器"
           }
         }
       }
     },
-    "Tools" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "工具"
+    "Virtual display options": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "虚拟显示器选项"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "工具"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "虛擬顯示器選項"
           }
         }
       }
     },
-    "True Tone" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "原彩显示"
+    "Virtual Displays": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "虚拟显示器"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "原彩"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "虛擬顯示器"
           }
         }
       }
     },
-    "Turns Extra Brightness on or off for a display that supports it." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "为支持的显示器开启或关闭额外亮度。"
+    "Volume Control": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音量控制"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "為支援的顯示器開啟或關閉額外亮度。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音量控制"
           }
         }
       }
     },
-    "Turns HDR on or off for an external display that supports it." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "为支持的外接显示器开启或关闭 HDR。"
+    "Width": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "宽度"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "為支援的外接顯示器開啟或關閉 HDR。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "寬度"
           }
         }
       }
     },
-    "Type shortcut… (Esc to cancel)" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请按下快捷键…（按 Esc 取消）"
+    "Work": {
+      "extractionState": "stale",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "請按下快速鍵…（按 Esc 取消）"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作"
           }
         }
       }
     },
-    "Unable to switch to %@, please try again" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "无法切换到 %@，请重试"
+    "yellow": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黄色"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "無法切換到 %@，請重試"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黃色"
           }
         }
       }
     },
-    "Update Available" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "有可用更新"
+    "DDC Detection": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DDC 检测"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "有可用更新"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DDC 檢測"
           }
         }
       }
     },
-    "Update available, version %@" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "有可用更新，版本 %@"
+    "DDC Channel": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DDC 通道"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "有可用更新，版本 %@"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DDC 通道"
           }
         }
       }
     },
-    "Update to Current Settings" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更新为当前设置"
+    "DDC Communication": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DDC 通信"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更新為目前設定"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DDC 通訊"
           }
         }
       }
     },
-    "Update to current values" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更新为当前值"
+    "DDC Capabilities Report": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DDC 能力报告"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "更新為目前值"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DDC 能力報告"
           }
         }
       }
     },
-    "From each panel's rated nits. HDR monitors report their HDR peak, so lower this if the built-in runs too bright" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "根据各屏幕的标称 nit 值计算。HDR 显示器报告的是其 HDR 峰值，若内建屏幕过亮请调低此值"
+    "Detailed DDC Report": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "详细的 DDC 能力报告"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "根據各螢幕的標稱 nit 值計算。HDR 顯示器報告的是其 HDR 峰值，若內建螢幕過亮請調低此值"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "詳細的 DDC 能力報告"
           }
         }
       }
     },
-    "Use brightness keys on external displays" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "用亮度键控制外接显示器"
+    "Available": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可用"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "用亮度鍵控制外接顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可用"
           }
         }
       }
     },
-    "v%@" : {
-      "shouldTranslate" : false
+    "Unavailable": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不可用"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不可用"
+          }
+        }
+      }
     },
-    "Value" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "值"
+    "Supported": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "受支持"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "數值"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "受支援"
           }
         }
       }
     },
-    "Variable (%@-%@)" : {
-      "comment" : "External VRR refresh-rate row, full range",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "可变（%@-%@）"
+    "Not Supported": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不支持"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "可變（%@-%@）"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不支援"
           }
         }
       }
     },
-    "Variable (up to %@)" : {
-      "comment" : "External VRR refresh-rate row",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "可变（最高 %@）"
+    "Fetched": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已获取"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "可變（最高 %@）"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已獲取"
           }
         }
       }
     },
-    "Virtual Display" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "虚拟显示器"
+    "Not Fetched": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未获取"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "虛擬顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未獲取"
           }
         }
       }
     },
-    "Virtual display options" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "虚拟显示器选项"
+    "Show": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "虛擬顯示器選項"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "顯示"
           }
         }
       }
     },
-    "Virtual Displays" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "虚拟显示器"
+    "Hide": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐藏"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "虛擬顯示器"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隱藏"
           }
         }
       }
     },
-    "Volume Control" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "音量控制"
+    "Reading DDC information…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在读取 DDC 信息…"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "音量控制"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在讀取 DDC 資訊…"
           }
         }
       }
     },
-    "Width" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "宽度"
+    "Brightness (Hardware)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亮度（硬件）"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "寬度"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "亮度（硬體）"
           }
         }
       }
     },
-    "Work" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "工作"
+    "Contrast (Hardware)": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "对比度（硬件）"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "工作"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "對比度（硬體）"
           }
         }
       }
     },
-    "yellow" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "黄色"
+    "Maximum: %lld · Current: %lld": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最大值：%lld · 当前值：%lld"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "黃色"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最大值：%lld · 目前值：%lld"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }
