@@ -204,7 +204,16 @@ final class SettingsService: ObservableObject, @unchecked Sendable {
     }
 
     @Published var inputOneValue: UInt16 = 0x11 {
-        didSet { defaults.set(Int(inputOneValue), forKey: Keys.inputOneValue) }
+        didSet {
+            defaults.set(Int(inputOneValue), forKey: Keys.inputOneValue)
+            // The registered hotkey captures its target input at registration time,
+            // so a picker change must re-register or the shortcut keeps switching to
+            // the old input (silently wrong when the new input is a different port).
+            // Deferred to the next main-queue turn: calling syncRegistrations()
+            // synchronously here deadlocks singleton initialization (SettingsService
+            // init -> HotkeyService -> PresetService -> SettingsService.shared).
+            Task { @MainActor in HotkeyService.shared.syncRegistrations() }
+        }
     }
 
     @Published var inputTwoShortcut: KeyboardShortcut? = nil {
@@ -218,7 +227,10 @@ final class SettingsService: ObservableObject, @unchecked Sendable {
     }
 
     @Published var inputTwoValue: UInt16 = 0x0F {
-        didSet { defaults.set(Int(inputTwoValue), forKey: Keys.inputTwoValue) }
+        didSet {
+            defaults.set(Int(inputTwoValue), forKey: Keys.inputTwoValue)
+            Task { @MainActor in HotkeyService.shared.syncRegistrations() }
+        }
     }
 
     /// One combo, one action: clears `shortcut` off every other row and preset holding it
