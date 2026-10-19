@@ -136,6 +136,13 @@ final class InputSwitchService: ObservableObject {
         let toggle = PhysicalDisplayToggleService.shared
         guard toggle.isSupported, !toggle.wouldLeaveNoActiveDisplay(displayID) else {
             Self.log.notice("display \(displayID, privacy: .public) switched to input \(value, privacy: .public), kept connected")
+            // The sole display stays connected, so a DP/USB-C link the monitor dropped
+            // while it showed another source never retrains by itself (the panel auto-
+            // jumps back to a live input and the Mac gets no signal). Watch it and
+            // blink the framebuffer (software hot plug) if it didn't settle.
+            if linkRecoveryApplies(to: value) {
+                recoverLinkAfterSwitch(display, target: value)
+            }
             return .success(false)
         }
         let result = await toggle.disconnect(display, returnInput: returnInput)
@@ -162,6 +169,57 @@ final class InputSwitchService: ObservableObject {
     }
 
     // MARK: - Private
+
+    /// Displays whose post-switch link recovery is already running, so a repeat key
+    /// press doesn't stack a second blink on the same display.
+    private var recoveryInFlight: Set<String> = []
+
+    /// Whether switching to `value` can drop the monitor's link: DP and USB-C inputs
+    /// ride the DP AUX channel, which the monitor can tear down while it shows another
+    /// source. HDMI inputs keep their I²C link and are excluded (they never bounce).
+    private func linkRecoveryApplies(to value: UInt16) -> Bool {
+        [0x0F, 0x10, 0x16, 0x17, 0x1B].contains(value)  // DP 1-4, USB-C
+    }
+
+    /// After a switch that kept the display connected (sole display), the monitor can
+    /// cut the link: the DDC write lands and the display switches, but no signal comes
+    /// back, so the panel auto-jumps to another live input. Wait a beat and read again;
+    /// if the display is not on the target input (or the read fails), the link is gone —
+    /// blink the framebuffer (a software hot plug, the same mechanism BetterDisplay's
+    /// reconnect uses) and re-issue the input write once the link retrains, so the
+    /// portable panel re-negotiates its USB-C/DP link.
+    private func recoverLinkAfterSwitch(_ display: DisplayInfo, target: UInt16) {
+        let uuid = display.displayUUID
+        guard recoveryInFlight.insert(uuid).inserted else { return }
+        Task { [weak self] in
+            defer { self?.recoveryInFlight.remove(uuid) }
+            // A monitor takes a beat to switch and (when it can) retrain the link.
+            try? await Task.sleep(nanoseconds: 3_000_000_000)
+            let displayID = display.displayID
+            var current = await DDCService.shared.readInput(displayID: displayID)
+            // One more look a second later: a read that fails mid-retrain would
+            // otherwise blink a display that is actually settling fine.
+            if current == nil || (current != nil && current! != target) {
+                try? await Task.sleep(nanoseconds: 1_000_000_000)
+                let again = await DDCService.shared.readInput(displayID: displayID)
+                if again != nil { current = again }
+            }
+            if let current, current == target {
+                Self.log.notice("display \(displayID, privacy: .public) settled on input \(target, privacy: .public) after switch, link ok")
+                return
+            }
+            Self.log.notice("display \(displayID, privacy: .public) not on target input \(target, privacy: .public) after switch (read \(current.map { String(format: "0x%02X", $0) } ?? "failed", privacy: .public)), blinking framebuffer to restore the link")
+            guard await PhysicalDisplayToggleService.shared.softReconnect(display) else {
+                Self.log.error("display \(displayID, privacy: .public): soft reconnect failed, link may stay down (unplug/replug the cable)")
+                return
+            }
+            // The monitor re-links to this Mac (a ~1.5 s hot plug drop) once the blink
+            // lands; only then can the input write reach it again.
+            try? await Task.sleep(nanoseconds: 1_500_000_000)
+            let written = await DDCService.shared.writeInputAfterReconnect(displayID: displayID, value: target)
+            Self.log.notice("display \(displayID, privacy: .public) link restored, input \(target, privacy: .public) re-written: \(written, privacy: .public)")
+        }
+    }
 
     private static func onlineDisplayID(uuid: String) -> CGDirectDisplayID? {
         var count: UInt32 = 0
